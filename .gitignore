@@ -1,0 +1,54 @@
+## Ignore Visual Studio temporary files, build results, and
+## user-specific files
+.vs/
+*.user
+*.suo
+
+## Ignore build output directories
+bin/
+obj/
+
+## Ignore Rider files
+.idea/
+*.sln.iml
+
+## Ignore ASP.NET temp files
+wwwroot/lib/
+wwwroot/node_modules/
+
+## Ignore user secrets
+secrets.json
+
+## Ignore .NET Core specific files
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Ignore publish output
+publish/
+out/
+
+## Ignore log files
+*.log
+
+## Ignore NPM packages (if used)
+node_modules/
+
+## Ignore environment files
+.env
+.env.*
+
+## Ignore Visual Studio Code settings
+.vscode/
+
+## Ignore ReSharper files
+*.DotSettings.user
+.ReSharper*/
+*_Resharper.*
+
+## Others
+*.db
+*.sqlite
+
+# Optional: ignore custom config files
+appsettings.json
