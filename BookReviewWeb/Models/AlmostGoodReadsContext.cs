@@ -17,6 +17,8 @@ public partial class AlmostGoodReadsContext : DbContext
 
     public virtual DbSet<Book> Books { get; set; }
 
+    public virtual DbSet<Genre> Genres { get; set; }
+
     public virtual DbSet<Review> Reviews { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
@@ -34,8 +36,21 @@ public partial class AlmostGoodReadsContext : DbContext
 
             entity.Property(e => e.Author).HasMaxLength(255);
             entity.Property(e => e.CoverImageUrl).HasMaxLength(2083);
-            entity.Property(e => e.Genre).HasMaxLength(100);
             entity.Property(e => e.Title).HasMaxLength(255);
+
+            entity.HasOne(d => d.Genre).WithMany(p => p.Books)
+                .HasForeignKey(d => d.GenreId)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("FK__Books__GenreId__628FA481");
+        });
+
+        modelBuilder.Entity<Genre>(entity =>
+        {
+            entity.HasKey(e => e.GenreId).HasName("PK__Genres__0385057ECC938080");
+
+            entity.HasIndex(e => e.GenreName, "UQ__Genres__BBE1C33958F9AB95").IsUnique();
+
+            entity.Property(e => e.GenreName).HasMaxLength(100);
         });
 
         modelBuilder.Entity<Review>(entity =>

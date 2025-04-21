@@ -13,11 +13,13 @@ public partial class Book
 
     public string? Description { get; set; }
 
-    public string? Genre { get; set; }
-
     public int? PublishYear { get; set; }
 
     public string? CoverImageUrl { get; set; }
+
+    public int? GenreId { get; set; }
+
+    public virtual Genre? Genre { get; set; }
 
     public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
 }
