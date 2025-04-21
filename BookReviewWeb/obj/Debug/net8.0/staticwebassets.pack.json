@@ -5,12 +5,20 @@
       "PackagePath": "staticwebassets\\BookReviewWeb.bundle.scp.css"
     },
     {
+      "Id": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\bookStyles.css",
+      "PackagePath": "staticwebassets\\css\\bookStyles.css"
+    },
+    {
       "Id": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\js\\bookScripts.js",
+      "PackagePath": "staticwebassets\\js\\bookScripts.js"
     },
     {
       "Id": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\js\\site.js",

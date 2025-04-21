@@ -1,0 +1,39 @@
+﻿@page
+@model BookReviewWeb.Pages.Library.IndexModel
+@using System.Linq
+
+@{
+    ViewData["Title"] = "Almost Good Reads - Home";
+}
+<link rel="stylesheet" href="~/css/bookStyles.css" />
+<div class="container">
+    <partial name="_PageHeader" />
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2>Book Library</h2>
+        </div>
+        <partial name="_SortingControls" model="@Model" />
+    </div>
+
+    @if (!Model.Book.Any())
+    {
+        <partial name="_EmptyState" />
+    }
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4 mb-4">
+            @foreach (var book in Model.Book)
+            {
+                <partial name="_BookCard" model="book" />
+            }
+        </div>
+
+        @if (Model.TotalPages > 1)
+        {
+            <partial name="_Pagination" model="@Model" />
+        }
+    }
+</div>
+
+<script src="~/js/bookScripts.js"></script>

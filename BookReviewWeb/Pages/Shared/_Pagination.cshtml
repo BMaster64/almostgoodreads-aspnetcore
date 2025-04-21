@@ -1,0 +1,53 @@
+﻿@model BookReviewWeb.Pages.Library.IndexModel
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        <li class="page-item @(Model.PageNumber == 1 ? "disabled" : "")">
+            <a class="page-link" href="?page=@(Model.PageNumber - 1)" tabindex="-1" aria-disabled="@(Model.PageNumber == 1)">Previous</a>
+        </li>
+        @{
+            int startPage = Math.Max(1, Model.PageNumber - 2);
+            int endPage = Math.Min(Model.TotalPages, startPage + 4);
+            if (endPage - startPage < 4)
+            {
+                startPage = Math.Max(1, endPage - 4);
+            }
+        }
+        @if (startPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" href="?page=1">1</a>
+            </li>
+
+            if (startPage > 2)
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">...</span>
+                </li>
+            }
+        }
+        @for (int i = startPage; i <= endPage; i++)
+        {
+            <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                <a class="page-link" href="?page=@i">@i</a>
+            </li>
+        }
+
+        @if (endPage < Model.TotalPages)
+        {
+            if (endPage < Model.TotalPages - 1)
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">...</span>
+                </li>
+            }
+            <li class="page-item">
+                <a class="page-link" href="?PageNumber=@Model.TotalPages&SortOrder=@Model.SortOrder">@Model.TotalPages</a>
+            </li>
+        }
+
+        <li class="page-item @(Model.PageNumber == Model.TotalPages ? "disabled" : "")">
+            <a class="page-link" href="?PageNumber=@(Model.PageNumber + 1)&SortOrder=@Model.SortOrder" aria-disabled="@(Model.PageNumber == Model.TotalPages)">Next</a>
+        </li>
+    </ul>
+</nav>
