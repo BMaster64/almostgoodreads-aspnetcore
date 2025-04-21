@@ -15,7 +15,9 @@ CREATE TABLE Books (
     Title NVARCHAR(255)    NOT NULL,
     Author NVARCHAR(255)   NOT NULL,
     Description NVARCHAR(MAX),
-    Genre NVARCHAR(100),
+    GenreId INT
+        REFERENCES Genres(Id)
+        ON DELETE SET NULL,
     PublishYear INT,
     CoverImageUrl NVARCHAR(2083)
 );
@@ -36,6 +38,11 @@ CREATE TABLE Reviews (
         DEFAULT SYSUTCDATETIME()
 );
 
+-- 4. Genres
+CREATE TABLE Genres (
+    GenreId INT IDENTITY PRIMARY KEY,
+    GenreName NVARCHAR(100) NOT NULL UNIQUE
+);
 
 -- ====================================
 -- Example CRUD queries for each feature
