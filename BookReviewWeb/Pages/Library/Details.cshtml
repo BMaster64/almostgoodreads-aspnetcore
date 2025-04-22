@@ -7,36 +7,31 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="~/css/detailsstyle.css" />
 <div class="container py-4">
-    <partial name="_BackToLibrary" />
+    <partial name="BookDetailsPage/_BackToLibrary" />
 
     <div class="card shadow-sm">
         <div class="card-body p-0">
             <div class="row g-0">
                 <!-- Book Cover (Left Side) -->
                 <div class="col-md-4 book-cover-container">
-                    <partial name="_BookCover" model="Model.Book" />
+                    <partial name="BookDetailsPage/_BookCover" model="Model.Book" />
                 </div>
 
                 <!-- Book Details (Right Side) -->
                 <div class="col-md-8">
                     <div class="card-body p-4">
-                        <partial name="_BookHeader" model="Model.Book" />
+                        <partial name="BookDetailsPage/_BookHeader" model="Model.Book" />
 
-                        <partial name="_BookDescription" model="Model.Book" />
+                        <partial name="BookDetailsPage/_BookDescription" model="Model.Book" />
 
-                        <partial name="_BookMetadata" model="Model.Book" />
+                        <partial name="BookDetailsPage/_BookMetadata" model="Model.Book" />
 
-                        <partial name="_ReviewSummary" model="Model" />
+                        <partial name="BookDetailsPage/_ReviewSummary" model="Model" />
 
-                        <partial name="_BookActions" model="Model.Book" />
+                        <partial name="BookDetailsPage/_BookActions" model="Model.Book" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Book.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
 </div>

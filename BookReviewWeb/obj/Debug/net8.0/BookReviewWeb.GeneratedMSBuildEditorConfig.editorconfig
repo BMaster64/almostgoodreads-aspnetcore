@@ -58,52 +58,52 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_BackToLibrary.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9CYWNrVG9MaWJyYXJ5LmNzaHRtbA==
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/BookDetailsPage/_BackToLibrary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXEJvb2tEZXRhaWxzUGFnZVxfQmFja1RvTGlicmFyeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_BookActions.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Cb29rQWN0aW9ucy5jc2h0bWw=
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/BookDetailsPage/_BookActions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXEJvb2tEZXRhaWxzUGFnZVxfQm9va0FjdGlvbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_BookCard.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Cb29rQ2FyZC5jc2h0bWw=
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/BookDetailsPage/_BookCover.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXEJvb2tEZXRhaWxzUGFnZVxfQm9va0NvdmVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_BookCover.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Cb29rQ292ZXIuY3NodG1s
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/BookDetailsPage/_BookDescription.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXEJvb2tEZXRhaWxzUGFnZVxfQm9va0Rlc2NyaXB0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_BookDescription.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Cb29rRGVzY3JpcHRpb24uY3NodG1s
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/BookDetailsPage/_BookHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXEJvb2tEZXRhaWxzUGFnZVxfQm9va0hlYWRlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_BookHeader.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Cb29rSGVhZGVyLmNzaHRtbA==
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/BookDetailsPage/_BookMetadata.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXEJvb2tEZXRhaWxzUGFnZVxfQm9va01ldGFkYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_BookMetadata.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Cb29rTWV0YWRhdGEuY3NodG1s
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/BookDetailsPage/_ReviewSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXEJvb2tEZXRhaWxzUGFnZVxfUmV2aWV3U3VtbWFyeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_EmptyState.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9FbXB0eVN0YXRlLmNzaHRtbA==
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/BookListPage/_BookCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXEJvb2tMaXN0UGFnZVxfQm9va0NhcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_PageHeader.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9QYWdlSGVhZGVyLmNzaHRtbA==
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/BookListPage/_EmptyState.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXEJvb2tMaXN0UGFnZVxfRW1wdHlTdGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/BookListPage/_PageHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXEJvb2tMaXN0UGFnZVxfUGFnZUhlYWRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/BookListPage/_SortingControls.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXEJvb2tMaXN0UGFnZVxfU29ydGluZ0NvbnRyb2xzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_Pagination.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9QYWdpbmF0aW9uLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_ReviewSummary.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9SZXZpZXdTdW1tYXJ5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_SortingControls.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Tb3J0aW5nQ29udHJvbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_ValidationScriptsPartial.cshtml]
