@@ -1,22 +1,23 @@
 ﻿@model BookReviewWeb.Models.Book
+
+
 <div class="col">
     <div class="card h-100 book-card">
         <div class="card-img-top book-cover-container">
             @if (!string.IsNullOrEmpty(Model.CoverImageUrl))
             {
-                <img src="@Model.CoverImageUrl" class="book-cover" alt="@Model.Title cover">
+                <a asp-page="./Details" asp-route-id="@Model.Id"><img src="@Model.CoverImageUrl" class="book-cover" alt="@Model.Title cover"></a>
             }
             else
             {
-
                 <div class="placeholder-cover">
                     <span>@Model.Title</span>
-                </div>          
+                </div>
             }
 
         </div>
         <div class="card-body">
-            <h5 class="card-title text-truncate" title="@Model.Title">@Model.Title</h5>
+            <a asp-page="./Details" asp-route-id="@Model.Id"><h5 class="card-title text-truncate" title="@Model.Title">@Model.Title</h5></a>
             <p class="card-text text-truncate" title="by @Model.Author">by @Model.Author</p>
         </div>
         <div class="card-footer bg-transparent border-top-0">

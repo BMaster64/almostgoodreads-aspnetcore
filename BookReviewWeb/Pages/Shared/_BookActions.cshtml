@@ -1,0 +1,5 @@
+﻿@model BookReviewWeb.Models.Book
+<div class="mt-4 d-flex">
+    <a asp-page="./Edit" asp-route-id="@Model.Id" class="btn btn-primary me-2">Edit Book</a>
+    <a asp-page="./Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger">Delete</a>
+</div>

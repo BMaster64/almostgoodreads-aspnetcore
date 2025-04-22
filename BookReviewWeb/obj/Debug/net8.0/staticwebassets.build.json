@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NKjV8stT8BWBP+7DT0fcGIHTzMRgs6ilud0Lfb3ss7s=",
+  "Hash": "Wvi1Nc889/o2PHAQGbZ0vPrIckX4qUstO/QAIni6mr8=",
   "Source": "BookReviewWeb",
   "BasePath": "_content/BookReviewWeb",
   "Mode": "Default",
@@ -55,12 +55,12 @@
       "OriginalItemSpec": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BookReviewWeb.bundle.scp.css"
     },
     {
-      "Identity": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\bookStyles.css",
+      "Identity": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\bookstyle.css",
       "SourceId": "BookReviewWeb",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\",
       "BasePath": "_content/BookReviewWeb",
-      "RelativePath": "css/bookStyles.css",
+      "RelativePath": "css/bookstyle.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -71,7 +71,26 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\bookStyles.css"
+      "OriginalItemSpec": "wwwroot\\css\\bookstyle.css"
+    },
+    {
+      "Identity": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\detailsstyle.css",
+      "SourceId": "BookReviewWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\",
+      "BasePath": "_content/BookReviewWeb",
+      "RelativePath": "css/detailsstyle.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\detailsstyle.css"
     },
     {
       "Identity": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\site.css",

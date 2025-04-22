@@ -58,8 +58,32 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_BackToLibrary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9CYWNrVG9MaWJyYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_BookActions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Cb29rQWN0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_BookCard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Cb29rQ2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_BookCover.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Cb29rQ292ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_BookDescription.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Cb29rRGVzY3JpcHRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_BookHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Cb29rSGVhZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_BookMetadata.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Cb29rTWV0YWRhdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_EmptyState.cshtml]
@@ -72,6 +96,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_Pagination.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9QYWdpbmF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_ReviewSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9SZXZpZXdTdW1tYXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_SortingControls.cshtml]

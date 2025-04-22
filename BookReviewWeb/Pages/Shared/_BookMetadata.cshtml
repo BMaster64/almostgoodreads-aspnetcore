@@ -1,0 +1,13 @@
+﻿@model BookReviewWeb.Models.Book
+<div class="book-metadata mb-4">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <h6 class="text-muted">Publication Year</h6>
+            <p>@(Model.PublishYear?.ToString() ?? "Unknown")</p>
+        </div>
+        <div class="col-md-6 mb-3">
+            <h6 class="text-muted">Genre</h6>
+            <p>@(Model.Genre?.GenreName ?? "Uncategorized")</p>
+        </div>
+    </div>
+</div>

@@ -5,8 +5,12 @@
       "PackagePath": "staticwebassets\\BookReviewWeb.bundle.scp.css"
     },
     {
-      "Id": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\bookStyles.css",
-      "PackagePath": "staticwebassets\\css\\bookStyles.css"
+      "Id": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\bookstyle.css",
+      "PackagePath": "staticwebassets\\css\\bookstyle.css"
+    },
+    {
+      "Id": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\detailsstyle.css",
+      "PackagePath": "staticwebassets\\css\\detailsstyle.css"
     },
     {
       "Id": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\site.css",

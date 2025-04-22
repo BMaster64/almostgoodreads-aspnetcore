@@ -19,6 +19,9 @@ namespace BookReviewWeb.Pages.Library
         }
 
         public Book Book { get; set; } = default!;
+        public double AverageRating => Book.Reviews.Any() ? Book.Reviews.Average(r => r.Rating ?? 0) : 0;
+        public int ReviewCount => Book.Reviews.Count;
+        public bool HasReviews => Book.Reviews.Any();
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -27,15 +30,17 @@ namespace BookReviewWeb.Pages.Library
                 return NotFound();
             }
 
-            var book = await _context.Books.FirstOrDefaultAsync(m => m.Id == id);
+            var book = await _context.Books
+                .Include(b => b.Genre)
+                .Include(b => b.Reviews)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
             if (book == null)
             {
                 return NotFound();
             }
-            else
-            {
-                Book = book;
-            }
+
+            Book = book;
             return Page();
         }
     }

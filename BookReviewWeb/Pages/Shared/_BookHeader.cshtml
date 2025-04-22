@@ -1,0 +1,8 @@
+﻿@model BookReviewWeb.Models.Book
+<h1 class="card-title mb-1">@Model.Title</h1>
+<h5 class="card-subtitle mb-3 text-muted">by @Model.Author</h5>
+
+<div class="mb-4">
+    <span class="badge bg-primary me-2">@(Model.Genre?.GenreName ?? "Uncategorized")</span>
+    <span class="badge bg-secondary">@(Model.PublishYear?.ToString() ?? "Unknown Year")</span>
+</div>

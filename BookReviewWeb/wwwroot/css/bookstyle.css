@@ -8,7 +8,7 @@
 }
 
 .book-cover-container {
-    height: 250px;
+    height: 340px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -32,4 +32,8 @@
     color: #666;
     text-align: center;
     padding: 10px;
+}
+
+a {
+    text-decoration: none;
 }
