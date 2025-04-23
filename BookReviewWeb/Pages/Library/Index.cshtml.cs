@@ -31,13 +31,24 @@ namespace BookReviewWeb.Pages.Library
 
         [BindProperty(SupportsGet = true)]
         public string SearchType { get; set; } = "title";
+
+        [BindProperty(SupportsGet = true)]
+        public int? GenreFilter { get; set; }
         public int TotalBooks { get; set; }
         public int TotalPages { get; set; }
         public int BooksPerPage { get; set; } = 25; // 5x5 grid
+        public List<Genre> Genres { get; set; } = new List<Genre>();
         public async Task OnGetAsync()
         {
             // Get base query with Genre included
             var booksQuery = _context.Books.Include(b => b.Genre).AsQueryable();
+
+            Genres = await _context.Genres.OrderBy(g => g.GenreName).ToListAsync();
+            // Apply genre filter if provided
+            if (GenreFilter.HasValue && GenreFilter > 0)
+            {
+                booksQuery = booksQuery.Where(b => b.GenreId == GenreFilter);
+            }
 
             // Apply search if term provided
             if (!string.IsNullOrEmpty(SearchTerm))

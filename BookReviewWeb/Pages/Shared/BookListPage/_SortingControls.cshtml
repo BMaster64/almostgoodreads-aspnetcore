@@ -1,15 +1,13 @@
 ﻿@model BookReviewWeb.Pages.Library.IndexModel
-<div class="d-flex">
-    <div class="dropdown me-2">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            Sort By: @Model.GetSortOrderDisplayText()
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="sortDropdown">
-            <li><a class="dropdown-item @(Model.SortOrder == "newest" ? "active" : "")" href="?SortOrder=newest&SearchTerm=@Model.SearchTerm&SearchType=@Model.SearchType">Newest First</a></li>
-            <li><a class="dropdown-item @(Model.SortOrder == "oldest" ? "active" : "")" href="?SortOrder=oldest&SearchTerm=@Model.SearchTerm&SearchType=@Model.SearchType">Oldest First</a></li>
-            <li><a class="dropdown-item @(Model.SortOrder == "title" ? "active" : "")" href="?SortOrder=title&SearchTerm=@Model.SearchTerm&SearchType=@Model.SearchType">Title (A-Z)</a></li>
-            <li><a class="dropdown-item @(Model.SortOrder == "author" ? "active" : "")" href="?SortOrder=author&SearchTerm=@Model.SearchTerm&SearchType=@Model.SearchType">Author (A-Z)</a></li>
-        </ul>
-    </div>
-    <a asp-page="Create" class="btn btn-primary">Add Book</a>
+<div class="dropdown ms-2">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        Sort By: @Model.GetSortOrderDisplayText()
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="sortDropdown">
+        <li><a class="dropdown-item @(Model.SortOrder == "newest" ? "active" : "")" href="?SortOrder=newest&SearchTerm=@Model.SearchTerm&SearchType=@Model.SearchType&GenreFilter=@Model.GenreFilter">Newest First</a></li>
+        <li><a class="dropdown-item @(Model.SortOrder == "oldest" ? "active" : "")" href="?SortOrder=oldest&SearchTerm=@Model.SearchTerm&SearchType=@Model.SearchType&GenreFilter=@Model.GenreFilter">Oldest First</a></li>
+        <li><a class="dropdown-item @(Model.SortOrder == "title" ? "active" : "")" href="?SortOrder=title&SearchTerm=@Model.SearchTerm&SearchType=@Model.SearchType&GenreFilter=@Model.GenreFilter">Title (A-Z)</a></li>
+        <li><a class="dropdown-item @(Model.SortOrder == "author" ? "active" : "")" href="?SortOrder=author&SearchTerm=@Model.SearchTerm&SearchType=@Model.SearchType&GenreFilter=@Model.GenreFilter">Author (A-Z)</a></li>
+    </ul>
 </div>
+<a asp-page="Create" class="btn btn-primary ms-2">Add Book</a>

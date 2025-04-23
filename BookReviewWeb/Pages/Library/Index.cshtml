@@ -13,7 +13,10 @@
         <div>
             <h2>Book Library</h2>
         </div>
-        <partial name="BookListPage/_SortingControls" model="@Model" />
+        <div class="filter-controls">
+            <partial name="BookListPage/_GenreFilter" model="@Model" />
+            <partial name="BookListPage/_SortingControls" model="@Model" />
+        </div>
     </div>
 
     @if (!Model.Book.Any())
@@ -40,6 +43,10 @@
             if (!string.IsNullOrEmpty(Model.SearchType))
             {
                 queryParams += $"&SearchType={Model.SearchType}";
+            }
+            if (Model.GenreFilter.HasValue && Model.GenreFilter > 0)
+            {
+                queryParams += $"&GenreFilter={Model.GenreFilter}";
             }
 
             var paginationModel = new BookReviewWeb.Pages.Shared.PaginationModel

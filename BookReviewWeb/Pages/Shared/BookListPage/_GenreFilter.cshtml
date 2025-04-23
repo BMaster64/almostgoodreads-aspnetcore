@@ -1,0 +1,22 @@
+﻿@model BookReviewWeb.Pages.Library.IndexModel
+
+<div class="dropdown">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="genreDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        @if (Model.GenreFilter.HasValue && Model.GenreFilter > 0)
+        {
+            var selectedGenre = Model.Genres.FirstOrDefault(g => g.GenreId == Model.GenreFilter);
+            <text>Genre: @(selectedGenre?.GenreName ?? "Unknown")</text>
+        }
+        else
+        {
+            <text>All Genres</text>
+        }
+    </button>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="genreDropdown">
+        <li><a class="dropdown-item @(Model.GenreFilter == null ? "active" : "")" href="?GenreFilter=&SortOrder=@Model.SortOrder&SearchTerm=@Model.SearchTerm&SearchType=@Model.SearchType">All Genres</a></li>
+        @foreach (var genre in Model.Genres)
+        {
+            <li><a class="dropdown-item @(Model.GenreFilter == genre.GenreId ? "active" : "")" href="?GenreFilter=@genre.GenreId&SortOrder=@Model.SortOrder&SearchTerm=@Model.SearchTerm&SearchType=@Model.SearchType">@genre.GenreName</a></li>
+        }
+    </ul>
+</div>
