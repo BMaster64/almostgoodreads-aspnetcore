@@ -46,3 +46,8 @@ button.accept-policy[b-7frzffj5j8] {
   white-space: nowrap;
   line-height: 60px;
 }
+@media (max-width: 768px) {
+    .input-group[b-7frzffj5j8] {
+        margin-top: 1rem;
+    }
+}

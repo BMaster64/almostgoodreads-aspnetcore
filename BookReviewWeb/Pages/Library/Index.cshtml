@@ -31,7 +31,25 @@
 
         @if (Model.TotalPages > 1)
         {
-            <partial name="_Pagination" model="@Model" />
+            // Build query string with all parameters except PageNumber
+            string queryParams = $"SortOrder={Model.SortOrder}";
+            if (!string.IsNullOrEmpty(Model.SearchTerm))
+            {
+                queryParams += $"&SearchTerm={Uri.EscapeDataString(Model.SearchTerm)}";
+            }
+            if (!string.IsNullOrEmpty(Model.SearchType))
+            {
+                queryParams += $"&SearchType={Model.SearchType}";
+            }
+
+            var paginationModel = new BookReviewWeb.Pages.Shared.PaginationModel
+                    {
+                        CurrentPage = Model.PageNumber,
+                        TotalPages = Model.TotalPages,
+                        QueryParams = queryParams
+                    };
+
+            <partial name="_Pagination" model="@paginationModel" />
         }
     }
 </div>

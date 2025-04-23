@@ -26,6 +26,11 @@ namespace BookReviewWeb.Pages.Library
         [BindProperty(SupportsGet = true)]
         public int PageNumber { get; set; } = 1;
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchTerm { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string SearchType { get; set; } = "title";
         public int TotalBooks { get; set; }
         public int TotalPages { get; set; }
         public int BooksPerPage { get; set; } = 25; // 5x5 grid
@@ -33,6 +38,17 @@ namespace BookReviewWeb.Pages.Library
         {
             // Get base query with Genre included
             var booksQuery = _context.Books.Include(b => b.Genre).AsQueryable();
+
+            // Apply search if term provided
+            if (!string.IsNullOrEmpty(SearchTerm))
+            {
+                SearchTerm = SearchTerm.Trim();
+                booksQuery = SearchType?.ToLower() switch
+                {
+                    "author" => booksQuery.Where(b => b.Author.Contains(SearchTerm)),
+                    _ => booksQuery.Where(b => b.Title.Contains(SearchTerm)) // default to title search
+                };
+            }
 
             // Apply sorting
             booksQuery = SortOrder switch
