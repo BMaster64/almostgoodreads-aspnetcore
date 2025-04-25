@@ -26,6 +26,30 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Document\Eppede\PRN222\PRN222_Project\BookReviewWeb
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Admin/Books.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQm9va3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Admin/Reviews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUmV2aWV3cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Auth/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Auth/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Auth/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxMb2dvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Auth/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -56,6 +80,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Reviews/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmV2aWV3c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Reviews/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmV2aWV3c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Reviews/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmV2aWV3c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/BookDetailsPage/_BackToLibrary.cshtml]
@@ -112,6 +148,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/User/MyReviews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclxNeVJldmlld3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/User/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclxQcm9maWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/_ViewImports.cshtml]

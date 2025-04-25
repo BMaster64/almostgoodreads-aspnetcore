@@ -1,0 +1,119 @@
+@page
+@model BookReviewWeb.Pages.User.MyReviewsModel
+@{
+    ViewData["Title"] = "My Reviews";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-user-circle fa-5x text-primary"></i>
+                    </div>
+                    <h3>@Model.CurrentUser.UserName</h3>
+                    <p class="text-muted">@Model.CurrentUser.Role</p>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a asp-page="/User/Profile" class="list-group-item list-group-item-action">
+                        <i class="fas fa-user me-2"></i> Profile
+                    </a>
+                    <a asp-page="/User/MyReviews" class="list-group-item list-group-item-action active">
+                        <i class="fas fa-star me-2"></i> My Reviews
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-9">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h2 class="mb-0">My Reviews</h2>
+                    <span class="badge bg-light text-dark">Total: @Model.Reviews.Count</span>
+                </div>
+                <div class="card-body">
+                    @if (!Model.Reviews.Any())
+                    {
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle me-2"></i> You haven't written any reviews yet.
+                            <a asp-page="/Library/Index" class="alert-link">Browse books</a> to add some reviews!
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="list-group">
+                            @foreach (var review in Model.Reviews)
+                            {
+                                <div class="list-group-item list-group-item-action p-0">
+                                    <div class="row g-0">
+                                        <div class="col-md-2">
+                                            <div class="p-3 text-center">
+                                                @if (!string.IsNullOrEmpty(review.Book.CoverImageUrl))
+                                                {
+                                                    <img src="@review.Book.CoverImageUrl" class="img-fluid rounded book-cover" alt="@review.Book.Title">
+                                                }
+                                                else
+                                                {
+                                                    <div class="placeholder-cover d-flex justify-content-center align-items-center bg-light">
+                                                        <i class="bi bi-book fs-1"></i>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <div class="card-body">
+                                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                                    <div>
+                                                        <h5 class="card-title mb-1">
+                                                            <a asp-page="/Library/Details" asp-route-id="@review.BookId" class="text-decoration-none">
+                                                                @review.Book.Title
+                                                            </a>
+                                                        </h5>
+                                                        <p class="text-muted small mb-2">by @review.Book.Author</p>
+                                                    </div>
+                                                    <small class="text-muted">@review.CreatedAt.ToString("MMM dd, yyyy")</small>
+                                                </div>
+                                                
+                                                <div class="rating mb-2">
+                                                    @for (int i = 1; i <= 5; i++)
+                                                    {
+                                                        <i class="bi @(i <= (review.Rating ?? 0) ? "bi-star-fill text-warning" : "bi-star text-muted")"></i>
+                                                    }
+                                                </div>
+                                                
+                                                <p class="card-text">@review.Comment</p>
+                                                
+                                                <div class="mt-2 d-flex gap-2">
+                                                    <a asp-page="/Reviews/Edit" asp-route-id="@review.Id" class="btn btn-sm btn-outline-primary">
+                                                        <i class="bi bi-pencil"></i> Edit
+                                                    </a>
+                                                    <a asp-page="/Reviews/Delete" asp-route-id="@review.Id" class="btn btn-sm btn-outline-danger">
+                                                        <i class="bi bi-trash"></i> Delete
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .book-cover {
+        max-height: 120px;
+        object-fit: contain;
+    }
+    
+    .placeholder-cover {
+        height: 120px;
+        width: 100%;
+        color: #6c757d;
+    }
+</style> 
