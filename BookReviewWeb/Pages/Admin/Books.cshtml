@@ -1,0 +1,165 @@
+@page
+@model BookReviewWeb.Pages.Admin.BooksModel
+@{
+    ViewData["Title"] = "Manage Books";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Manage Books</h1>
+        <a asp-page="/Library/Create" class="btn btn-primary">
+            <i class="fas fa-plus me-2"></i> Add New Book
+        </a>
+    </div>
+
+    @if (Model.SuccessMessage != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i> @Model.SuccessMessage
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-light">
+            <div class="row g-2">
+                <div class="col-md-5">
+                    <form method="get" class="d-flex">
+                        <input type="text" name="SearchTerm" value="@Model.SearchTerm" class="form-control me-2" placeholder="Search by title or author" />
+                        <button type="submit" class="btn btn-outline-primary">Search</button>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form method="get" class="d-flex">
+                        <select asp-for="GenreFilter" asp-items="@(new SelectList(Model.Genres, "Id", "GenreName"))" class="form-select me-2">
+                            <option value="">All Genres</option>
+                        </select>
+                        <button type="submit" class="btn btn-outline-secondary">Filter</button>
+                    </form>
+                </div>
+                <div class="col-md-3">
+                    <form method="get" class="d-flex">
+                        <select asp-for="SortOrder" class="form-select me-2" onchange="this.form.submit()">
+                            <option value="title">Title (A-Z)</option>
+                            <option value="title_desc">Title (Z-A)</option>
+                            <option value="author">Author (A-Z)</option>
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            @if (!Model.Books.Any())
+            {
+                <div class="alert alert-info m-3">
+                    <i class="fas fa-info-circle me-2"></i> No books found matching your criteria.
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width: 60px;"></th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Year</th>
+                                <th>Genre</th>
+                                <th style="width: 150px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var book in Model.Books)
+                            {
+                                <tr>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(book.CoverImageUrl))
+                                        {
+                                            <img src="@book.CoverImageUrl" class="img-thumbnail" style="width: 50px;" alt="@book.Title">
+                                        }
+                                        else
+                                        {
+                                            <div class="bg-light text-center rounded" style="width: 50px; height: 50px;">
+                                                <i class="bi bi-book" style="font-size: 1.5rem; line-height: 50px;"></i>
+                                            </div>
+                                        }
+                                    </td>
+                                    <td>
+                                        <a asp-page="/Library/Details" asp-route-id="@book.Id" class="text-decoration-none fw-bold">
+                                            @book.Title
+                                        </a>
+                                    </td>
+                                    <td>@book.Author</td>
+                                    <td>@book.PublishYear</td>
+                                    <td>@(book.Genre?.GenreName ?? "None")</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a asp-page="/Library/Edit" asp-route-id="@book.Id" class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a asp-page="/Library/Details" asp-route-id="@book.Id" class="btn btn-sm btn-outline-info">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a asp-page="/Library/Delete" asp-route-id="@book.Id" class="btn btn-sm btn-outline-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+
+    @if (Model.TotalPages > 1)
+    {
+        <nav aria-label="Page navigation" class="mt-4">
+            <ul class="pagination justify-content-center">
+                @if (Model.PageNumber > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-page="/Admin/Books" 
+                           asp-route-pageNumber="@(Model.PageNumber - 1)"
+                           asp-route-sortOrder="@Model.SortOrder"
+                           asp-route-searchTerm="@Model.SearchTerm"
+                           asp-route-genreFilter="@Model.GenreFilter">
+                            Previous
+                        </a>
+                    </li>
+                }
+                
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                        <a class="page-link" asp-page="/Admin/Books" 
+                           asp-route-pageNumber="@i"
+                           asp-route-sortOrder="@Model.SortOrder"
+                           asp-route-searchTerm="@Model.SearchTerm"
+                           asp-route-genreFilter="@Model.GenreFilter">
+                            @i
+                        </a>
+                    </li>
+                }
+                
+                @if (Model.PageNumber < Model.TotalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-page="/Admin/Books" 
+                           asp-route-pageNumber="@(Model.PageNumber + 1)"
+                           asp-route-sortOrder="@Model.SortOrder"
+                           asp-route-searchTerm="@Model.SearchTerm"
+                           asp-route-genreFilter="@Model.GenreFilter">
+                            Next
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+</div>

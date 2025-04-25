@@ -1,0 +1,158 @@
+@page
+@model BookReviewWeb.Pages.Admin.ReviewsModel
+@{
+    ViewData["Title"] = "Manage Reviews";
+}
+
+<div class="container">
+    <h1 class="mb-4">Manage Reviews</h1>
+
+    @if (Model.SuccessMessage != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i> @Model.SuccessMessage
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-light">
+            <div class="row g-2">
+                <div class="col-md-4">
+                    <form method="get" class="d-flex">
+                        <input type="text" name="SearchTerm" value="@Model.SearchTerm" class="form-control me-2" placeholder="Search by book or user" />
+                        <button type="submit" class="btn btn-outline-primary">Search</button>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form method="get" class="d-flex">
+                        <select asp-for="RatingFilter" class="form-select me-2" onchange="this.form.submit()">
+                            <option value="">All Ratings</option>
+                            <option value="5">5 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="2">2 Stars</option>
+                            <option value="1">1 Star</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <form method="get" class="d-flex">
+                        <select asp-for="SortOrder" class="form-select me-2" onchange="this.form.submit()">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="highest">Highest Rating</option>
+                            <option value="lowest">Lowest Rating</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            @if (!Model.Reviews.Any())
+            {
+                <div class="alert alert-info m-3">
+                    <i class="fas fa-info-circle me-2"></i> No reviews found matching your criteria.
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Book</th>
+                                <th>User</th>
+                                <th>Rating</th>
+                                <th>Comment</th>
+                                <th>Date</th>
+                                <th style="width: 120px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var review in Model.Reviews)
+                            {
+                                <tr>
+                                    <td>
+                                        <a asp-page="/Library/Details" asp-route-id="@review.BookId" class="text-decoration-none">
+                                            @review.Book.Title
+                                        </a>
+                                    </td>
+                                    <td>@review.User.UserName</td>
+                                    <td>
+                                        <div class="rating">
+                                            @for (int i = 1; i <= 5; i++)
+                                            {
+                                                <i class="bi @(i <= (review.Rating ?? 0) ? "bi-star-fill text-warning" : "bi-star text-muted")"></i>
+                                            }
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @(review.Comment?.Length > 100 ? $"{review.Comment.Substring(0, 100)}..." : review.Comment)
+                                    </td>
+                                    <td>@review.CreatedAt.ToString("MMM dd, yyyy")</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a asp-page="/Reviews/Edit" asp-route-id="@review.Id" class="btn btn-sm btn-outline-primary">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a asp-page="/Reviews/Delete" asp-route-id="@review.Id" class="btn btn-sm btn-outline-danger">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+
+    @if (Model.TotalPages > 1)
+    {
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                @if (Model.PageNumber > 1)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-page="/Admin/Reviews" 
+                           asp-route-pageNumber="@(Model.PageNumber - 1)"
+                           asp-route-sortOrder="@Model.SortOrder"
+                           asp-route-searchTerm="@Model.SearchTerm"
+                           asp-route-ratingFilter="@Model.RatingFilter">
+                            Previous
+                        </a>
+                    </li>
+                }
+                
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                        <a class="page-link" asp-page="/Admin/Reviews" 
+                           asp-route-pageNumber="@i"
+                           asp-route-sortOrder="@Model.SortOrder"
+                           asp-route-searchTerm="@Model.SearchTerm"
+                           asp-route-ratingFilter="@Model.RatingFilter">
+                            @i
+                        </a>
+                    </li>
+                }
+                
+                @if (Model.PageNumber < Model.TotalPages)
+                {
+                    <li class="page-item">
+                        <a class="page-link" asp-page="/Admin/Reviews" 
+                           asp-route-pageNumber="@(Model.PageNumber + 1)"
+                           asp-route-sortOrder="@Model.SortOrder"
+                           asp-route-searchTerm="@Model.SearchTerm"
+                           asp-route-ratingFilter="@Model.RatingFilter">
+                            Next
+                        </a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    }
+</div> 

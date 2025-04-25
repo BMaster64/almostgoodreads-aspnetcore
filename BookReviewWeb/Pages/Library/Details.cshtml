@@ -9,7 +9,7 @@
 <div class="container py-4">
     <partial name="BookDetailsPage/_BackToLibrary" />
 
-    <div class="card shadow-sm">
+    <div class="card shadow-sm mb-4">
         <div class="card-body p-0">
             <div class="row g-0">
                 <!-- Book Cover (Left Side) -->
@@ -34,4 +34,267 @@
             </div>
         </div>
     </div>
+
+    <!-- Reviews Section -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-light">
+            <h3 class="mb-0">Reviews</h3>
+        </div>
+        <div class="card-body">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <!-- Add Review Form for logged in users -->
+                <div class="mb-4 p-3 border rounded">
+                    <h4>Write a Review</h4>
+                    <form method="post" id="reviewForm">
+                        <input type="hidden" asp-for="ReviewInput.BookId" value="@Model.Book.Id" />
+                        <input type="hidden" id="ratingInput" asp-for="ReviewInput.Rating" value="0" />
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Rating</label>
+                            <div class="star-rating">
+                                <i class="bi bi-star star-item" data-rating="1"></i>
+                                <i class="bi bi-star star-item" data-rating="2"></i>
+                                <i class="bi bi-star star-item" data-rating="3"></i>
+                                <i class="bi bi-star star-item" data-rating="4"></i>
+                                <i class="bi bi-star star-item" data-rating="5"></i>
+                                <span id="ratingValue" class="ms-2 text-muted">0/5</span>
+                            </div>
+                            <span asp-validation-for="ReviewInput.Rating" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="ReviewInput.Comment" class="form-label">Comment</label>
+                            <textarea asp-for="ReviewInput.Comment" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="ReviewInput.Comment" class="text-danger"></span>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Submit Review</button>
+                    </form>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle"></i> 
+                    Please <a asp-page="/Auth/Login" asp-route-returnUrl="@Request.Path">log in</a> to leave a review.
+                </div>
+            }
+
+            <!-- Display existing reviews -->
+            <h4 class="mt-4 mb-3">@Model.ReviewCount Review@(Model.ReviewCount != 1 ? "s" : "")</h4>
+            
+            @if (!Model.HasReviews)
+            {
+                <div class="alert alert-light">
+                    <i class="bi bi-chat-square-text"></i> No reviews yet. Be the first to review this book!
+                </div>
+            }
+            else
+            {
+                <div class="review-list">
+                    @foreach (var review in Model.Book.Reviews.OrderByDescending(r => r.CreatedAt))
+                    {
+                        <div class="review-item card mb-3 review-card" data-bs-toggle="modal" data-bs-target="#reviewModal-@review.Id">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h5 class="mb-0">@review.User.UserName</h5>
+                                    <small class="text-muted">@review.CreatedAt.ToString("MMM dd, yyyy")</small>
+                                </div>
+                                
+                                <div class="rating mb-2">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        <i class="bi @(i <= (review.Rating ?? 0) ? "bi-star-fill text-warning" : "bi-star text-muted")"></i>
+                                    }
+                                </div>
+                                
+                                <p class="review-text-truncated">@review.Comment</p>
+                                
+                                @if (User.Identity.IsAuthenticated && int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value) == review.UserId || User.IsInRole("Admin"))
+                                {
+                                    <div class="review-actions mt-2" onclick="event.stopPropagation();">
+                                        <a asp-page="/Reviews/Edit" asp-route-id="@review.Id" class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-pencil"></i> Edit
+                                        </a>
+                                        <a asp-page="/Reviews/Delete" asp-route-id="@review.Id" class="btn btn-sm btn-outline-danger">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        
+                        <!-- Modal for full review -->
+                        <div class="modal fade" id="reviewModal-@review.Id" tabindex="-1" aria-labelledby="reviewModalLabel-@review.Id" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="reviewModalLabel-@review.Id">Review by @review.User.UserName</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <div class="rating">
+                                                @for (int i = 1; i <= 5; i++)
+                                                {
+                                                    <i class="bi @(i <= (review.Rating ?? 0) ? "bi-star-fill text-warning" : "bi-star text-muted")"></i>
+                                                }
+                                                <span class="ms-2">@(review.Rating ?? 0)/5</span>
+                                            </div>
+                                            <small class="text-muted">@review.CreatedAt.ToString("MMM dd, yyyy")</small>
+                                        </div>
+                                        <div class="review-content">
+                                            <p>@review.Comment</p>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        @if (User.Identity.IsAuthenticated && int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value) == review.UserId || User.IsInRole("Admin"))
+                                        {
+                                            <a asp-page="/Reviews/Edit" asp-route-id="@review.Id" class="btn btn-primary">
+                                                <i class="bi bi-pencil"></i> Edit
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <style>
+        .star-rating {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+        }
+        
+        .star-item {
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        .star-item.active {
+            color: #ffc107;
+        }
+        
+        .star-item:hover {
+            color: #ffc107;
+        }
+        
+        .star-item.active ~ .star-item:hover {
+            color: inherit;
+        }
+
+        .review-card {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        .review-text-truncated {
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            position: relative;
+            min-height: 50px;
+        }
+        
+        .review-text-truncated::after {
+            content: "Click to read more...";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 0 5px;
+            background-color: white;
+            font-size: 0.8rem;
+            color: #0d6efd;
+            display: none;
+        }
+        
+        .review-text-truncated:hover::after {
+            display: inline;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stars = document.querySelectorAll('.star-item');
+            const ratingInput = document.getElementById('ratingInput');
+            const ratingValue = document.getElementById('ratingValue');
+            const reviewForm = document.getElementById('reviewForm');
+            
+            // Function to update stars display
+            function updateStars(rating) {
+                stars.forEach(star => {
+                    const starRating = parseInt(star.getAttribute('data-rating'));
+                    if (starRating <= rating) {
+                        star.classList.add('active');
+                        star.classList.remove('bi-star');
+                        star.classList.add('bi-star-fill');
+                    } else {
+                        star.classList.remove('active');
+                        star.classList.add('bi-star');
+                        star.classList.remove('bi-star-fill');
+                    }
+                });
+                ratingValue.textContent = rating + '/5';
+                ratingInput.value = rating;
+            }
+            
+            // Add click events to stars
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    updateStars(rating);
+                });
+                
+                // Add hover effect
+                star.addEventListener('mouseenter', function() {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    stars.forEach(s => {
+                        const starRating = parseInt(s.getAttribute('data-rating'));
+                        if (starRating <= rating) {
+                            s.classList.add('bi-star-fill');
+                            s.classList.remove('bi-star');
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseleave', function() {
+                    const currentRating = parseInt(ratingInput.value);
+                    stars.forEach(s => {
+                        const starRating = parseInt(s.getAttribute('data-rating'));
+                        if (starRating <= currentRating) {
+                            s.classList.add('bi-star-fill');
+                            s.classList.remove('bi-star');
+                        } else {
+                            s.classList.add('bi-star');
+                            s.classList.remove('bi-star-fill');
+                        }
+                    });
+                });
+            });
+            
+            // Validate form submission
+            reviewForm.addEventListener('submit', function(e) {
+                if (parseInt(ratingInput.value) === 0) {
+                    e.preventDefault();
+                    alert('Please select a rating before submitting your review.');
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,155 @@
+@page
+@model BookReviewWeb.Pages.Reviews.EditModel
+@{
+    ViewData["Title"] = "Edit Review";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">Edit Review</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <h3>@Model.Review.Book.Title</h3>
+                        <p class="text-muted">by @Model.Review.Book.Author</p>
+                    </div>
+                    
+                    <form method="post" id="reviewForm">
+                        <input type="hidden" asp-for="Review.Id" />
+                        <input type="hidden" asp-for="Review.BookId" />
+                        <input type="hidden" asp-for="Review.UserId" />
+                        <input type="hidden" asp-for="Review.CreatedAt" />
+                        <input type="hidden" id="ratingInput" asp-for="Review.Rating" />
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Rating</label>
+                            <div class="star-rating">
+                                <i class="bi bi-star star-item" data-rating="1"></i>
+                                <i class="bi bi-star star-item" data-rating="2"></i>
+                                <i class="bi bi-star star-item" data-rating="3"></i>
+                                <i class="bi bi-star star-item" data-rating="4"></i>
+                                <i class="bi bi-star star-item" data-rating="5"></i>
+                                <span id="ratingValue" class="ms-2 text-muted">0/5</span>
+                            </div>
+                            <span asp-validation-for="Review.Rating" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Review.Comment" class="form-label">Comment</label>
+                            <textarea asp-for="Review.Comment" class="form-control" rows="5"></textarea>
+                            <span asp-validation-for="Review.Comment" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <a asp-page="/Library/Details" asp-route-id="@Model.Review.BookId" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <style>
+        .star-rating {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+        }
+        
+        .star-item {
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        
+        .star-item.active {
+            color: #ffc107;
+        }
+        
+        .star-item:hover {
+            color: #ffc107;
+        }
+        
+        .star-item.active ~ .star-item:hover {
+            color: inherit;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const stars = document.querySelectorAll('.star-item');
+            const ratingInput = document.getElementById('ratingInput');
+            const ratingValue = document.getElementById('ratingValue');
+            const reviewForm = document.getElementById('reviewForm');
+            const initialRating = parseInt(ratingInput.value) || 0;
+            
+            // Function to update stars display
+            function updateStars(rating) {
+                stars.forEach(star => {
+                    const starRating = parseInt(star.getAttribute('data-rating'));
+                    if (starRating <= rating) {
+                        star.classList.add('active');
+                        star.classList.remove('bi-star');
+                        star.classList.add('bi-star-fill');
+                    } else {
+                        star.classList.remove('active');
+                        star.classList.add('bi-star');
+                        star.classList.remove('bi-star-fill');
+                    }
+                });
+                ratingValue.textContent = rating + '/5';
+                ratingInput.value = rating;
+            }
+            
+            // Initialize with current rating value
+            updateStars(initialRating);
+            
+            // Add click events to stars
+            stars.forEach(star => {
+                star.addEventListener('click', function() {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    updateStars(rating);
+                });
+                
+                // Add hover effect
+                star.addEventListener('mouseenter', function() {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    stars.forEach(s => {
+                        const starRating = parseInt(s.getAttribute('data-rating'));
+                        if (starRating <= rating) {
+                            s.classList.add('bi-star-fill');
+                            s.classList.remove('bi-star');
+                        }
+                    });
+                });
+                
+                star.addEventListener('mouseleave', function() {
+                    const currentRating = parseInt(ratingInput.value);
+                    stars.forEach(s => {
+                        const starRating = parseInt(s.getAttribute('data-rating'));
+                        if (starRating <= currentRating) {
+                            s.classList.add('bi-star-fill');
+                            s.classList.remove('bi-star');
+                        } else {
+                            s.classList.add('bi-star');
+                            s.classList.remove('bi-star-fill');
+                        }
+                    });
+                });
+            });
+            
+            // Validate form submission
+            reviewForm.addEventListener('submit', function(e) {
+                if (parseInt(ratingInput.value) === 0) {
+                    e.preventDefault();
+                    alert('Please select a rating before submitting your review.');
+                }
+            });
+        });
+    </script>
+} 

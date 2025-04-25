@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BookReviewWeb.styles.css" asp-append-version="true" />
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
     <header>
@@ -25,9 +27,13 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Library/Index">Books</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Reviews/Index">Reviews</a>
+                        </li>
                     </ul>
+                    
                     <!-- Search Form -->
-                    <form class="d-flex" method="get" action="/Library/Index">
+                    <form class="d-flex me-3" method="get" action="/Library/Index">
                         <div class="input-group">
                             <select class="form-select" name="SearchType" style="max-width: 120px;">
                                 <option value="title">By Title</option>
@@ -37,6 +43,42 @@
                             <button class="btn btn-outline-primary" type="submit">Search</button>
                         </div>
                     </form>
+                    
+                    <!-- User Authentication -->
+                    <ul class="navbar-nav">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user-circle"></i> @User.Identity.Name
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                    <li><a class="dropdown-item" asp-page="/User/Profile">My Profile</a></li>
+                                    @if (User.IsInRole("User"))
+                                    {
+                                        <li><a class="dropdown-item" asp-page="/User/MyReviews">My Reviews</a></li>
+                                    }
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" asp-page="/Admin/Books">Manage Books</a></li>
+                                        <li><a class="dropdown-item" asp-page="/Admin/Reviews">Manage Reviews</a></li>
+                                    }
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" asp-page="/Auth/Logout">Logout</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-outline-primary me-2" asp-page="/Auth/Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-primary text-white" asp-page="/Auth/Register">Register</a>
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -49,7 +91,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025
+            &copy; 2025 - AlmostGoodReads
         </div>
     </footer>
 
