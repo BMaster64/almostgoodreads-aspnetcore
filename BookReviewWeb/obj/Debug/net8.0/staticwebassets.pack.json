@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\images\\covers\\89eae4c4-2e4e-4445-ad24-9a82ddf26017_9c7969a8-b112-4fbf-9158-14f8183a6840.jpg",
+      "PackagePath": "staticwebassets\\images\\covers\\89eae4c4-2e4e-4445-ad24-9a82ddf26017_9c7969a8-b112-4fbf-9158-14f8183a6840.jpg"
+    },
+    {
       "Id": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\js\\bookScripts.js",
       "PackagePath": "staticwebassets\\js\\bookScripts.js"
     },

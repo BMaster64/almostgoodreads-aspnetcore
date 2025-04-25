@@ -12,27 +12,56 @@ namespace BookReviewWeb.Pages.Library
     public class CreateModel : PageModel
     {
         private readonly BookReviewWeb.Models.AlmostGoodReadsContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public CreateModel(BookReviewWeb.Models.AlmostGoodReadsContext context)
+        public CreateModel(BookReviewWeb.Models.AlmostGoodReadsContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult OnGet()
         {
-        ViewData["GenreId"] = new SelectList(_context.Genres, "GenreId", "GenreId");
+            ViewData["GenreId"] = new SelectList(_context.Genres, "GenreId", "GenreName");
             return Page();
         }
 
         [BindProperty]
         public Book Book { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
+        [BindProperty]
+        public IFormFile? CoverImage { get; set; }
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
+                ViewData["GenreId"] = new SelectList(_context.Genres, "GenreId", "GenreName");
                 return Page();
+            }
+            // Check if file upload is used (takes precedence if both are provided)
+            if (CoverImage != null && CoverImage.Length > 0)
+            {
+                // Create a unique filename for the image
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "covers");
+
+                // Ensure the directory exists
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                // Create unique filename using GUID
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + CoverImage.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                // Save the file
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await CoverImage.CopyToAsync(fileStream);
+                }
+
+                // Update the CoverImageUrl property with the relative path
+                Book.CoverImageUrl = "/images/covers/" + uniqueFileName;
             }
 
             _context.Books.Add(Book);

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Wvi1Nc889/o2PHAQGbZ0vPrIckX4qUstO/QAIni6mr8=",
+  "Hash": "VFXYIy1oL0VHIPbbFcC7UTDCQx4beiy7zbhHCdGIlzo=",
   "Source": "BookReviewWeb",
   "BasePath": "_content/BookReviewWeb",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\images\\covers\\89eae4c4-2e4e-4445-ad24-9a82ddf26017_9c7969a8-b112-4fbf-9158-14f8183a6840.jpg",
+      "SourceId": "BookReviewWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\",
+      "BasePath": "_content/BookReviewWeb",
+      "RelativePath": "images/covers/89eae4c4-2e4e-4445-ad24-9a82ddf26017_9c7969a8-b112-4fbf-9158-14f8183a6840.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\covers\\89eae4c4-2e4e-4445-ad24-9a82ddf26017_9c7969a8-b112-4fbf-9158-14f8183a6840.jpg"
     },
     {
       "Identity": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\js\\bookScripts.js",

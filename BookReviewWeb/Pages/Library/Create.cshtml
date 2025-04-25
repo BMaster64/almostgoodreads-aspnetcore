@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Book.Title" class="control-label"></label>
@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Book.Description" class="control-label"></label>
-                <input asp-for="Book.Description" class="form-control" />
+                <textarea asp-for="Book.Description" class="form-control" rows="5"></textarea>
                 <span asp-validation-for="Book.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -34,13 +34,18 @@
                 <span asp-validation-for="Book.PublishYear" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Book.CoverImageUrl" class="control-label"></label>
-                <input asp-for="Book.CoverImageUrl" class="form-control" />
+                <label asp-for="Book.CoverImageUrl" class="control-label">Cover Image URL</label>
+                <input asp-for="Book.CoverImageUrl" id="coverImageUrl" class="form-control" oninput="toggleImageInputs()" />
                 <span asp-validation-for="Book.CoverImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Book.GenreId" class="control-label"></label>
-                <select asp-for="Book.GenreId" class ="form-control" asp-items="ViewBag.GenreId"></select>
+                <label asp-for="CoverImage" class="control-label">Or Upload Cover Image</label>
+                <input type="file" asp-for="CoverImage" id="coverImageFile" class="form-control" onchange="toggleImageInputs()" />
+                <span asp-validation-for="CoverImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book.GenreId" class="control-label">Genre</label>
+                <select asp-for="Book.GenreId" class="form-control" asp-items="ViewBag.GenreId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -54,5 +59,30 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function toggleImageInputs() {
+            const urlInput = document.getElementById('coverImageUrl');
+            const fileInput = document.getElementById('coverImageFile');
+
+            if (urlInput.value.trim() !== '') {
+                fileInput.disabled = true;
+                fileInput.value = '';  // Clear the file input
+            } else if (fileInput.files.length > 0) {
+                urlInput.disabled = true;
+                urlInput.value = '';  // Clear the URL input
+            } else {
+                // If both are empty, enable both
+                urlInput.disabled = false;
+                fileInput.disabled = false;
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            toggleImageInputs();
+        });
+    </script>
 }
