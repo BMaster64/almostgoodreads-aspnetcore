@@ -24,6 +24,9 @@ namespace BookReviewWeb.Pages.Library
         public double AverageRating => Book.Reviews.Any() ? Book.Reviews.Average(r => r.Rating ?? 0) : 0;
         public int ReviewCount => Book.Reviews.Count;
         public bool HasReviews => Book.Reviews.Any();
+        
+        // Dictionary to store user review counts
+        public Dictionary<int, int> UserReviewCounts { get; set; } = new Dictionary<int, int>();
 
         [BindProperty]
         public ReviewInputModel ReviewInput { get; set; }
@@ -60,6 +63,23 @@ namespace BookReviewWeb.Pages.Library
             }
 
             Book = book;
+            
+            // Get user IDs from the reviews
+            var userIds = Book.Reviews.Select(r => r.UserId).Distinct().ToList();
+            
+            // Query the database to get review counts for each user
+            var userReviewCounts = await _context.Reviews
+                .Where(r => userIds.Contains(r.UserId))
+                .GroupBy(r => r.UserId)
+                .Select(g => new { UserId = g.Key, Count = g.Count() })
+                .ToListAsync();
+                
+            // Populate the dictionary
+            foreach (var item in userReviewCounts)
+            {
+                UserReviewCounts[item.UserId] = item.Count;
+            }
+            
             return Page();
         }
 

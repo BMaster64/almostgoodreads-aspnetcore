@@ -98,7 +98,15 @@
                         <div class="review-item card mb-3 review-card" data-bs-toggle="modal" data-bs-target="#reviewModal-@review.Id">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <h5 class="mb-0">@review.User.UserName</h5>
+                                    <div class="d-flex align-items-center">
+                                        <h5 class="mb-0 me-2">@review.User.UserName</h5>
+                                        <span class="badge bg-secondary user-review-count" 
+                                              data-bs-toggle="tooltip" 
+                                              data-bs-placement="right"
+                                              title="@Model.UserReviewCounts[review.UserId] total reviews by this user">
+                                            <i class="bi bi-pencil-fill me-1"></i>@Model.UserReviewCounts[review.UserId]
+                                        </span>
+                                    </div>
                                     <small class="text-muted">@review.CreatedAt.ToString("MMM dd, yyyy")</small>
                                 </div>
                                 
@@ -130,7 +138,17 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="reviewModalLabel-@review.Id">Review by @review.User.UserName</h5>
+                                        <div>
+                                            <h5 class="modal-title" id="reviewModalLabel-@review.Id">
+                                                Review by @review.User.UserName
+                                                <span class="badge bg-secondary user-review-count ms-2" 
+                                                      data-bs-toggle="tooltip" 
+                                                      data-bs-placement="right"
+                                                      title="@Model.UserReviewCounts[review.UserId] total reviews by this user">
+                                                    <i class="bi bi-pencil-fill me-1"></i>@Model.UserReviewCounts[review.UserId]
+                                                </span>
+                                            </h5>
+                                        </div>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -228,9 +246,21 @@
         .review-text-truncated:hover::after {
             display: inline;
         }
+        
+        .user-review-count {
+            font-size: 0.75rem;
+            cursor: help;
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Initialize tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+            
+            // Existing star rating code
             const stars = document.querySelectorAll('.star-item');
             const ratingInput = document.getElementById('ratingInput');
             const ratingValue = document.getElementById('ratingValue');
