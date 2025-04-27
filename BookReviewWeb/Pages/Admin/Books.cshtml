@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-md-4">
                     <form method="get" class="d-flex">
-                        <select asp-for="GenreFilter" asp-items="@(new SelectList(Model.Genres, "Id", "GenreName"))" class="form-select me-2">
+                        <select asp-for="GenreFilter" asp-items="@(new SelectList(Model.Genres, "GenreId", "GenreName"))" class="form-select me-2">
                             <option value="">All Genres</option>
                         </select>
                         <button type="submit" class="btn btn-outline-secondary">Filter</button>
