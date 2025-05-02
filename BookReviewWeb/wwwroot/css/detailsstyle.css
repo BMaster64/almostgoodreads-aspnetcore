@@ -70,3 +70,9 @@
 .text-warning {
     color: #ffc107 !important;
 }
+
+.genre-checkbox-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}

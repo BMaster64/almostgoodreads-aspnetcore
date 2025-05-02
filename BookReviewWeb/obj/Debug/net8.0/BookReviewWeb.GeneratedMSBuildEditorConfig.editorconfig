@@ -30,6 +30,22 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQm9va3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Admin/CreateGenre.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQ3JlYXRlR2VucmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Admin/DeleteGenre.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRGVsZXRlR2VucmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Admin/EditGenre.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRWRpdEdlbnJlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Admin/Genres.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cR2VucmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Document/Eppede/PRN222/PRN222_Project/BookReviewWeb/Pages/Admin/Reviews.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cUmV2aWV3cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

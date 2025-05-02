@@ -20,24 +20,42 @@ namespace BookReviewWeb.Pages.Library
             _webHostEnvironment = webHostEnvironment;
         }
 
-        public IActionResult OnGet()
-        {
-            ViewData["GenreId"] = new SelectList(_context.Genres, "GenreId", "GenreName");
-            return Page();
-        }
-
         [BindProperty]
         public Book Book { get; set; } = default!;
 
         [BindProperty]
         public IFormFile? CoverImage { get; set; }
+
+        [BindProperty]
+        public List<int> SelectedGenreIds { get; set; } = new List<int>();
+
+        public IActionResult OnGet()
+        {
+            ViewData["Genres"] = new MultiSelectList(_context.Genres, "GenreId", "GenreName");
+            return Page();
+        }
+
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
-                ViewData["GenreId"] = new SelectList(_context.Genres, "GenreId", "GenreName");
+                ViewData["Genres"] = new MultiSelectList(_context.Genres, "GenreId", "GenreName");
                 return Page();
             }
+
+            // Attach selected genres to the book
+            if (SelectedGenreIds != null && SelectedGenreIds.Any())
+            {
+                foreach (var genreId in SelectedGenreIds)
+                {
+                    var genre = await _context.Genres.FindAsync(genreId);
+                    if (genre != null)
+                    {
+                        Book.Genres.Add(genre);
+                    }
+                }
+            }
+
             // Check if file upload is used (takes precedence if both are provided)
             if (CoverImage != null && CoverImage.Length > 0)
             {

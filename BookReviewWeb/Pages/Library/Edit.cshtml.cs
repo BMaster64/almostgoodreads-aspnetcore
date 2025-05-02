@@ -24,6 +24,9 @@ namespace BookReviewWeb.Pages.Library
         public Book Book { get; set; } = default!;
         [BindProperty]
         public IFormFile? CoverImage { get; set; }
+        [BindProperty]
+        public List<int> SelectedGenreIds { get; set; } = new List<int>();
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -31,13 +34,21 @@ namespace BookReviewWeb.Pages.Library
                 return NotFound();
             }
 
-            var book =  await _context.Books.FirstOrDefaultAsync(m => m.Id == id);
+            var book = await _context.Books
+                .Include(b => b.Genres)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (book == null)
             {
                 return NotFound();
             }
             Book = book;
-            ViewData["GenreId"] = new SelectList(_context.Genres, "GenreId", "GenreName");
+            
+            // Populate the selected genres
+            SelectedGenreIds = Book.Genres.Select(g => g.GenreId).ToList();
+            
+            // Use MultiSelectList for multiple selection
+            ViewData["Genres"] = new MultiSelectList(_context.Genres, "GenreId", "GenreName");
+            
             return Page();
         }
 
@@ -45,9 +56,22 @@ namespace BookReviewWeb.Pages.Library
         {
             if (!ModelState.IsValid)
             {
-                ViewData["GenreId"] = new SelectList(_context.Genres, "GenreId", "GenreName");
+                ViewData["Genres"] = new MultiSelectList(_context.Genres, "GenreId", "GenreName");
                 return Page();
             }
+            // Load the existing book with genres
+            var bookToUpdate = await _context.Books
+                .Include(b => b.Genres)
+                .FirstOrDefaultAsync(b => b.Id == Book.Id);
+            
+            if (bookToUpdate == null) return NotFound();
+            
+            // Update simple properties
+            bookToUpdate.Title = Book.Title;
+            bookToUpdate.Author = Book.Author;
+            bookToUpdate.Description = Book.Description;
+            bookToUpdate.PublishYear = Book.PublishYear;
+            
             // Check if file upload is used
             if (CoverImage != null && CoverImage.Length > 0)
             {
@@ -71,27 +95,38 @@ namespace BookReviewWeb.Pages.Library
                 }
 
                 // Update the CoverImageUrl property with the relative path
-                Book.CoverImageUrl = "/images/covers/" + uniqueFileName;
+                bookToUpdate.CoverImageUrl = "/images/covers/" + uniqueFileName;
             }
-
-            _context.Attach(Book).State = EntityState.Modified;
-
+            else
+            {
+                bookToUpdate.CoverImageUrl = Book.CoverImageUrl;
+            }
+            
+            // Update genres - remove existing and add selected
+            bookToUpdate.Genres.Clear();
+            
+            if (SelectedGenreIds != null && SelectedGenreIds.Any())
+            {
+                foreach (var genreId in SelectedGenreIds)
+                {
+                    var genre = await _context.Genres.FindAsync(genreId);
+                    if (genre != null)
+                    {
+                        bookToUpdate.Genres.Add(genre);
+                    }
+                }
+            }
+            
             try
             {
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BookExists(Book.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                if (!BookExists(Book.Id)) return NotFound();
+                else throw;
             }
-
+            
             return RedirectToPage("./Index");
         }
 

@@ -1,0 +1,45 @@
+@page
+@model BookReviewWeb.Pages.Admin.DeleteGenreModel
+@{
+    ViewData["Title"] = "Delete Genre";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-danger text-white">
+                    <h2 class="mb-0">Delete Genre</h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Warning:</strong> Are you sure you want to delete the genre "<strong>@Model.Genre.GenreName</strong>"?
+                    </div>
+                    
+                    @if (Model.AssociatedBooksCount > 0)
+                    {
+                        <div class="alert alert-info mb-4">
+                            <i class="fas fa-info-circle me-2"></i>
+                            This genre is currently associated with <strong>@Model.AssociatedBooksCount</strong> book(s).
+                            Deleting this genre will remove it from all associated books.
+                        </div>
+                    }
+                    
+                    <form method="post">
+                        <input type="hidden" asp-for="Genre.GenreId" />
+                        
+                        <div class="d-flex justify-content-between">
+                            <a asp-page="./Genres" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-1"></i> Back to Genres
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash me-1"></i> Delete Genre
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

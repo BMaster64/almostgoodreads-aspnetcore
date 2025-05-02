@@ -42,7 +42,7 @@ namespace BookReviewWeb.Pages.Library
         {
             // Get base query with Genre included
             var booksQuery = _context.Books
-                .Include(b => b.Genre)
+                .Include(b => b.Genres)
                 .Include(b => b.Reviews)
                 .AsQueryable();
 
@@ -50,7 +50,7 @@ namespace BookReviewWeb.Pages.Library
             // Apply genre filter if provided
             if (GenreFilter.HasValue && GenreFilter > 0)
             {
-                booksQuery = booksQuery.Where(b => b.GenreId == GenreFilter);
+                booksQuery = booksQuery.Where(b => b.Genres.Any(g => g.GenreId == GenreFilter));
             }
 
             // Apply search if term provided

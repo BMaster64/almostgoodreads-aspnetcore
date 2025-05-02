@@ -1,6 +1,7 @@
 using BookReviewWeb.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Antiforgery;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,12 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<AlmostGoodReadsContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn")));
 builder.Services.AddControllers();
+
+// Configure antiforgery
+builder.Services.AddAntiforgery(options => {
+    options.HeaderName = "RequestVerificationToken";
+});
+
 // Add authentication
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

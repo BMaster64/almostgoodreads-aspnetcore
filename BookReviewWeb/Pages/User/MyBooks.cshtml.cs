@@ -42,7 +42,7 @@ namespace BookReviewWeb.Pages.User
             // Get the user's books with their status and include book details
             var query = _context.MyBooks
                 .Include(mb => mb.Book)
-                .ThenInclude(b => b.Genre)
+                .ThenInclude(b => b.Genres)
                 .Include(mb => mb.Book.Reviews)
                 .Where(mb => mb.UserId == userId);
 

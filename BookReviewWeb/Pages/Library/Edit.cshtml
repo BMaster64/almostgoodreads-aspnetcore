@@ -24,7 +24,7 @@
                 <input asp-for="Book.Author" class="form-control" />
                 <span asp-validation-for="Book.Author" class="text-danger"></span>
             </div>
-            <<div class="form-group">
+            <div class="form-group">
                 <label asp-for="Book.Description" class="control-label"></label>
                 <textarea asp-for="Book.Description" class="form-control" rows="5"></textarea>
                 <span asp-validation-for="Book.Description" class="text-danger"></span>
@@ -45,8 +45,25 @@
                 <span asp-validation-for="CoverImage" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Book.GenreId" class="control-label">Genre</label>
-                <select asp-for="Book.GenreId" class="form-control" asp-items="ViewBag.GenreId"></select>
+                <div class="d-flex justify-content-between align-items-center">
+                    <label class="control-label">Genres</label>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addGenreModal">
+                            <i class="fas fa-plus"></i> Add New Genre
+                        </button>
+                    }
+                </div>
+                <div class="genre-checkbox-list">
+                    @foreach (var genre in ViewBag.Genres)
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="SelectedGenreIds" value="@genre.Value" 
+                                id="genre_@genre.Value" @(Model.SelectedGenreIds.Contains(int.Parse(genre.Value)) ? "checked" : "") />
+                            <label class="form-check-label" for="genre_@genre.Value">@genre.Text</label>
+                        </div>
+                    }
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -57,6 +74,34 @@
 
 <div>
     <a asp-page="./Index">Back to List</a>
+</div>
+
+<!-- Add Genre Modal -->
+<div class="modal fade" id="addGenreModal" tabindex="-1" aria-labelledby="addGenreModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addGenreModalLabel">Add New Genre</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-success" id="genreSuccess" style="display: none;">
+                    <i class="fas fa-check-circle me-2"></i> <span id="successMessage"></span>
+                </div>
+                <div class="alert alert-danger" id="genreError" style="display: none;">
+                    <i class="fas fa-exclamation-circle me-2"></i> <span id="errorMessage"></span>
+                </div>
+                <div class="mb-3">
+                    <label for="genreName" class="form-label">Genre Name</label>
+                    <input type="text" class="form-control" id="genreName" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="saveGenreBtn">Save Genre</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section Scripts {
@@ -84,6 +129,66 @@
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', function () {
             toggleImageInputs();
+            
+            // Add Genre AJAX functionality
+            document.getElementById('saveGenreBtn').addEventListener('click', function() {
+                const genreName = document.getElementById('genreName').value.trim();
+                if (!genreName) {
+                    document.getElementById('genreError').style.display = 'block';
+                    document.getElementById('errorMessage').textContent = 'Genre name is required';
+                    return;
+                }
+                
+                // Reset alerts
+                document.getElementById('genreError').style.display = 'none';
+                document.getElementById('genreSuccess').style.display = 'none';
+                
+                // Make AJAX call to create genre
+                fetch('/api/genres', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                    },
+                    body: JSON.stringify({ genreName: genreName })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Show success message
+                        document.getElementById('genreSuccess').style.display = 'block';
+                        document.getElementById('successMessage').textContent = `Genre "${genreName}" was created successfully`;
+                        
+                        // Add the new genre to the checkbox list
+                        const genresList = document.querySelector('.genre-checkbox-list');
+                        const newCheck = document.createElement('div');
+                        newCheck.className = 'form-check';
+                        newCheck.innerHTML = `
+                            <input class="form-check-input" type="checkbox" name="SelectedGenreIds" 
+                                   value="${data.genreId}" id="genre_${data.genreId}" checked />
+                            <label class="form-check-label" for="genre_${data.genreId}">${genreName}</label>
+                        `;
+                        genresList.appendChild(newCheck);
+                        
+                        // Clear input
+                        document.getElementById('genreName').value = '';
+                        
+                        // Close modal after 1.5 seconds
+                        setTimeout(() => {
+                            bootstrap.Modal.getInstance(document.getElementById('addGenreModal')).hide();
+                        }, 1500);
+                    } else {
+                        // Show error message
+                        document.getElementById('genreError').style.display = 'block';
+                        document.getElementById('errorMessage').textContent = data.error || 'Failed to create genre';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('genreError').style.display = 'block';
+                    document.getElementById('errorMessage').textContent = 'An error occurred. Please try again.';
+                    console.error('Error:', error);
+                });
+            });
         });
     </script>
 }

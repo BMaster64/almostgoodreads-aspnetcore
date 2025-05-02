@@ -54,7 +54,7 @@
                                             <partial name="BookListPage/_BookRating" model="@book" />
                                             
                                             <p class="small mb-0">
-                                                <span class="badge bg-secondary">@(book.Genre?.GenreName ?? "Uncategorized")</span>
+                                                <span class="badge bg-secondary">@(string.Join(", ", book.Genres.Select(g => g.GenreName)))</span>
                                             </p>
                                         </div>
                                     </div>

@@ -61,6 +61,23 @@ CREATE TABLE MyBooks (
     CONSTRAINT UQ_UserBook UNIQUE (UserId, BookId)
 );
 
+-- 6. BookGenres
+ALTER TABLE Books
+DROP CONSTRAINT FK__Books__GenreId__628FA481;
+
+ALTER TABLE Books
+DROP COLUMN GenreId;
+
+CREATE TABLE BookGenres (
+    BookId INT NOT NULL
+        REFERENCES Books(Id)
+        ON DELETE CASCADE,
+    GenreId INT NOT NULL
+        REFERENCES Genres(GenreId)
+        ON DELETE CASCADE,
+    PRIMARY KEY (BookId, GenreId)
+);
+
 -- ====================================
 -- Example CRUD queries for each feature
 -- ====================================

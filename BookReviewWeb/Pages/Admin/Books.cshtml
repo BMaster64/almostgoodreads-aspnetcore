@@ -94,7 +94,7 @@
                                     </td>
                                     <td>@book.Author</td>
                                     <td>@book.PublishYear</td>
-                                    <td>@(book.Genre?.GenreName ?? "None")</td>
+                                    <td>@(string.Join(", ", book.Genres.Select(g => g.GenreName)))</td>
                                     <td>
                                         <div class="btn-group">
                                             <a asp-page="/Library/Edit" asp-route-id="@book.Id" class="btn btn-sm btn-outline-primary">

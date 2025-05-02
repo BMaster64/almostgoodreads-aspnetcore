@@ -25,6 +25,8 @@ public partial class AlmostGoodReadsContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+    public virtual DbSet<BookGenre> BookGenres { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
@@ -39,11 +41,6 @@ public partial class AlmostGoodReadsContext : DbContext
             entity.Property(e => e.Author).HasMaxLength(255);
             entity.Property(e => e.CoverImageUrl).HasMaxLength(2083);
             entity.Property(e => e.Title).HasMaxLength(255);
-
-            entity.HasOne(d => d.Genre).WithMany(p => p.Books)
-                .HasForeignKey(d => d.GenreId)
-                .OnDelete(DeleteBehavior.SetNull)
-                .HasConstraintName("FK__Books__GenreId__628FA481");
         });
 
         modelBuilder.Entity<Genre>(entity =>
@@ -54,6 +51,26 @@ public partial class AlmostGoodReadsContext : DbContext
 
             entity.Property(e => e.GenreName).HasMaxLength(100);
         });
+
+        modelBuilder.Entity<BookGenre>(entity =>
+        {
+            entity.HasKey(e => new { e.BookId, e.GenreId });
+
+            entity.HasOne(d => d.Book)
+                .WithMany()
+                .HasForeignKey(d => d.BookId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            entity.HasOne(d => d.Genre)
+                .WithMany()
+                .HasForeignKey(d => d.GenreId)
+                .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<Book>()
+            .HasMany(b => b.Genres)
+            .WithMany(g => g.Books)
+            .UsingEntity<BookGenre>();
 
         modelBuilder.Entity<MyBook>(entity =>
         {

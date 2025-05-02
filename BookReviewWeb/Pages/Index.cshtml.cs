@@ -25,7 +25,7 @@ namespace BookReviewWeb.Pages
         {
             // Get 5 latest books
             LatestBooks = await _context.Books
-                .Include(b => b.Genre)
+                .Include(b => b.Genres)
                 .Include(b => b.Reviews)
                 .OrderByDescending(b => b.PublishYear)
                 .Take(5)

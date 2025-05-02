@@ -48,6 +48,22 @@
             
             <!-- Add Rating Display -->
             <partial name="BookListPage/_BookRating" model="@Model" />
+
+            <!-- Replace the genre display part with this -->
+            <span class="badge bg-secondary">
+                @if (Model.Genres != null && Model.Genres.Any())
+                {
+                    @string.Join(", ", Model.Genres.Take(2).Select(g => g.GenreName))
+                    @if(Model.Genres.Count > 2)
+                    {
+                        <text>...</text>
+                    }
+                }
+                else
+                {
+                    <text>Uncategorized</text>
+                }
+            </span>
         </div>
         <div class="card-footer bg-transparent border-top-0">
             @if (isAuthenticated)

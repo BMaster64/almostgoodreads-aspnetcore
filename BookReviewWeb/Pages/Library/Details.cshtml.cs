@@ -53,7 +53,7 @@ namespace BookReviewWeb.Pages.Library
             }
 
             var book = await _context.Books
-                .Include(b => b.Genre)
+                .Include(b => b.Genres)
                 .Include(b => b.Reviews)
                 .ThenInclude(r => r.User)
                 .FirstOrDefaultAsync(m => m.Id == id);

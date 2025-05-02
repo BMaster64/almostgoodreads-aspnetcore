@@ -6,8 +6,17 @@
             <p>@(Model.PublishYear?.ToString() ?? "Unknown")</p>
         </div>
         <div class="col-md-6 mb-3">
-            <h6 class="text-muted">Genre</h6>
-            <p>@(Model.Genre?.GenreName ?? "Uncategorized")</p>
+            <h6 class="text-muted">Genres</h6>
+            <p>
+                @if (Model.Genres != null && Model.Genres.Any())
+                {
+                    @string.Join(", ", Model.Genres.Select(g => g.GenreName))
+                }
+                else
+                {
+                    <span>Uncategorized</span>
+                }
+            </p>
         </div>
     </div>
 </div>
