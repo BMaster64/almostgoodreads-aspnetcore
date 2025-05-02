@@ -3,68 +3,172 @@
   "WorkspaceRootPath": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\library\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\library\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\shared\\bookdetailspage\\_reviewsummary.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\shared\\bookdetailspage\\_reviewsummary.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|d:\\document\\eppede\\prn222\\prn222_project\\bookreviewweb\\pages\\shared\\bookdetailspage\\_bookmetadata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\shared\\bookdetailspage\\_bookmetadata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|d:\\document\\eppede\\prn222\\prn222_project\\bookreviewweb\\pages\\library\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\library\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|d:\\document\\eppede\\prn222\\prn222_project\\bookreviewweb\\pages\\library\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\library\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|d:\\document\\eppede\\prn222\\prn222_project\\bookreviewweb\\pages\\shared\\bookdetailspage\\_bookheader.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\shared\\bookdetailspage\\_bookheader.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|d:\\document\\eppede\\prn222\\prn222_project\\bookreviewweb\\wwwroot\\js\\bookscripts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:wwwroot\\js\\bookscripts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|d:\\document\\eppede\\prn222\\prn222_project\\bookreviewweb\\pages\\shared\\booklistpage\\_sortingcontrols.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\shared\\booklistpage\\_sortingcontrols.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\library\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\library\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|d:\\document\\eppede\\prn222\\prn222_project\\bookreviewweb\\pages\\admin\\books.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\admin\\books.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|d:\\document\\eppede\\prn222\\prn222_project\\bookreviewweb\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|d:\\document\\eppede\\prn222\\prn222_project\\bookreviewweb\\pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\library\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\library\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|d:\\document\\eppede\\prn222\\prn222_project\\bookreviewweb\\pages\\library\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\library\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|d:\\document\\eppede\\prn222\\prn222_project\\bookreviewweb\\pages\\reviews\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\reviews\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\auth\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\auth\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\library\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\library\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\library\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\library\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\library\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\library\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\auth\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\auth\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\shared\\booklistpage\\_bookcard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\shared\\booklistpage\\_bookcard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\library\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\library\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\admin\\books.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\admin\\books.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\library\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\library\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\js\\bookscripts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:wwwroot\\js\\bookscripts.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\shared\\booklistpage\\_sortingcontrols.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\shared\\booklistpage\\_sortingcontrols.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\reviews\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\reviews\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\shared\\bookdetailspage\\_addtomybooks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\shared\\bookdetailspage\\_addtomybooks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\library\\details.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\library\\details.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\migrations\\20250425015626_addreviewvotes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:migrations\\20250425015626_addreviewvotes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\admin\\reviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\admin\\reviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\user\\myreviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\user\\myreviews.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\shared\\bookdetailspage\\_reviewsummary.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\shared\\bookdetailspage\\_reviewsummary.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\user\\mybooks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\user\\mybooks.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\user\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\user\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\reviews\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\reviews\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\user\\profile.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\user\\profile.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\shared\\bookdetailspage\\_bookcover.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\shared\\bookdetailspage\\_bookcover.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\user\\mybooks.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\user\\mybooks.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\bookstyle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:wwwroot\\css\\bookstyle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\controllers\\mybooksapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:controllers\\mybooksapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\models\\almostgoodreadscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:models\\almostgoodreadscontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\library\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\library\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\reviews\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\reviews\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\shared\\bookdetailspage\\_bookmetadata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\shared\\bookdetailspage\\_bookmetadata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\shared\\bookdetailspage\\_bookheader.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\shared\\bookdetailspage\\_bookheader.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\auth\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|solutionrelative:pages\\auth\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{96FC9E2C-FE88-46C8-A164-0E5E108C579A}|BookReviewWeb.csproj|D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\pages\\shared\\booklistpage\\_pageheader.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -78,7 +182,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 97,
+          "SelectedChildIndex": 100,
           "Children": [
             {
               "$type": "Bookmark",
@@ -454,46 +558,381 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_BookMetadata.cshtml",
-              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookDetailsPage\\_BookMetadata.cshtml",
-              "RelativeDocumentMoniker": "Pages\\Shared\\BookDetailsPage\\_BookMetadata.cshtml",
-              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookDetailsPage\\_BookMetadata.cshtml",
-              "RelativeToolTip": "Pages\\Shared\\BookDetailsPage\\_BookMetadata.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-27T14:32:19.29Z",
-              "EditorCaption": ""
+              "DocumentIndex": 27,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Index.cshtml.cs",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Index.cshtml.cs",
+              "RelativeToolTip": "Pages\\Index.cshtml.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABwAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T16:23:09.919Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "_ValidationScriptsPartial.cshtml",
-              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeDocumentMoniker": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeToolTip": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Details.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Library\\Details.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Details.cshtml",
+              "RelativeToolTip": "Pages\\Library\\Details.cshtml",
+              "ViewState": "AQIAAGkAAAAAAAAAAAAowHAAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-27T14:28:31.793Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-24T04:29:53.253Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Login.cshtml.cs",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Auth\\Login.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Auth\\Login.cshtml.cs",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Auth\\Login.cshtml.cs",
+              "RelativeToolTip": "Pages\\Auth\\Login.cshtml.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAwwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T01:38:19.276Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Pages\\Library\\Edit.cshtml",
-              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Edit.cshtml",
-              "RelativeToolTip": "Pages\\Library\\Edit.cshtml",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAmwEEAAAAEAAAA",
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Create.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Library\\Create.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Create.cshtml",
+              "RelativeToolTip": "Pages\\Library\\Create.cshtml",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAC0AAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-27T14:26:40.287Z",
+              "WhenOpened": "2025-04-27T14:27:46.454Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Index.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Library\\Index.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Index.cshtml",
+              "RelativeToolTip": "Pages\\Library\\Index.cshtml",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAAB4AAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-24T03:58:19.641Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Library\\Index.cshtml.cs",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Index.cshtml.cs",
+              "RelativeToolTip": "Pages\\Library\\Index.cshtml.cs",
+              "ViewState": "AQIAAD4AAAAAAAAAAAAAwCcAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-24T04:15:32.713Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-27T14:30:23.414Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T15:02:45.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Reviews.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Admin\\Reviews.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Admin\\Reviews.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Admin\\Reviews.cshtml",
+              "RelativeToolTip": "Pages\\Admin\\Reviews.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-28T16:35:40.351Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Auth\\Login.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Auth\\Login.cshtml",
+              "RelativeToolTip": "Pages\\Auth\\Login.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-29T01:38:16.498Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "20250425015626_AddReviewVotes.cs",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Migrations\\20250425015626_AddReviewVotes.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250425015626_AddReviewVotes.cs",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Migrations\\20250425015626_AddReviewVotes.cs",
+              "RelativeToolTip": "Migrations\\20250425015626_AddReviewVotes.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T16:35:48.034Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "site.js",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "wwwroot\\js\\site.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-04-28T16:51:10.475Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "site.css",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "wwwroot\\css\\site.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-28T16:53:01.672Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Create.cshtml.cs",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Create.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Library\\Create.cshtml.cs",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Create.cshtml.cs",
+              "RelativeToolTip": "Pages\\Library\\Create.cshtml.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAowAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-29T01:33:19.85Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Index.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Index.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Index.cshtml",
+              "RelativeToolTip": "Pages\\Index.cshtml",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAG8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-28T16:23:01.924Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Reviews\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Reviews\\Index.cshtml.cs",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Reviews\\Index.cshtml.cs",
+              "RelativeToolTip": "Pages\\Reviews\\Index.cshtml.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAQwB4AAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T16:15:16.546Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Profile.cshtml.cs",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\User\\Profile.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\User\\Profile.cshtml.cs",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\User\\Profile.cshtml.cs",
+              "RelativeToolTip": "Pages\\User\\Profile.cshtml.cs",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAiwGYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T16:09:26.656Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "_AddToMyBooks.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookDetailsPage\\_AddToMyBooks.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Shared\\BookDetailsPage\\_AddToMyBooks.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookDetailsPage\\_AddToMyBooks.cshtml",
+              "RelativeToolTip": "Pages\\Shared\\BookDetailsPage\\_AddToMyBooks.cshtml",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAUwCoAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-28T15:50:19.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "_BookCover.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookDetailsPage\\_BookCover.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Shared\\BookDetailsPage\\_BookCover.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookDetailsPage\\_BookCover.cshtml",
+              "RelativeToolTip": "Pages\\Shared\\BookDetailsPage\\_BookCover.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-28T15:49:03.996Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Details.cshtml.cs",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Details.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\Library\\Details.cshtml.cs",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Details.cshtml.cs",
+              "RelativeToolTip": "Pages\\Library\\Details.cshtml.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAqwCsAAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T15:30:37.024Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Reviews\\Index.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Reviews\\Index.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Reviews\\Index.cshtml",
+              "RelativeToolTip": "Pages\\Reviews\\Index.cshtml",
+              "ViewState": "AQIAADAAAAAAAAAAAAAmwDgAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-28T13:57:16.161Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "MyReviews.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\User\\MyReviews.cshtml",
+              "RelativeDocumentMoniker": "Pages\\User\\MyReviews.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\User\\MyReviews.cshtml",
+              "RelativeToolTip": "Pages\\User\\MyReviews.cshtml",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAABwAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-27T16:43:41.681Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Profile.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\User\\Profile.cshtml",
+              "RelativeDocumentMoniker": "Pages\\User\\Profile.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\User\\Profile.cshtml",
+              "RelativeToolTip": "Pages\\User\\Profile.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAABUAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-27T16:22:42.477Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "bookstyle.css",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\bookstyle.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\bookstyle.css",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\css\\bookstyle.css",
+              "RelativeToolTip": "wwwroot\\css\\bookstyle.css",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAwAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-28T13:55:42.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_BookCard.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookListPage\\_BookCard.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Shared\\BookListPage\\_BookCard.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookListPage\\_BookCard.cshtml",
+              "RelativeToolTip": "Pages\\Shared\\BookListPage\\_BookCard.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACkAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-27T16:36:28.453Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "MyBooks.cshtml.cs",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\User\\MyBooks.cshtml.cs",
+              "RelativeDocumentMoniker": "Pages\\User\\MyBooks.cshtml.cs",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\User\\MyBooks.cshtml.cs",
+              "RelativeToolTip": "Pages\\User\\MyBooks.cshtml.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAAqwD4AAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T13:42:40.067Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-28T15:13:43.215Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "MyBooks.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\User\\MyBooks.cshtml",
+              "RelativeDocumentMoniker": "Pages\\User\\MyBooks.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\User\\MyBooks.cshtml",
+              "RelativeToolTip": "Pages\\User\\MyBooks.cshtml",
+              "ViewState": "AQIAAAgAAAAAAAAAAIAwwBUAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-28T13:42:31.842Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 12,
+              "Title": "bookScripts.js",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\js\\bookScripts.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\bookScripts.js",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\js\\bookScripts.js",
+              "RelativeToolTip": "wwwroot\\js\\bookScripts.js",
+              "ViewState": "AQIAABYAAAAAAAAAAAAuwBoAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-04-27T14:28:57.842Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "MyBooksApiController.cs",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Controllers\\MyBooksApiController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MyBooksApiController.cs",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Controllers\\MyBooksApiController.cs",
+              "RelativeToolTip": "Controllers\\MyBooksApiController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-28T13:54:12.823Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "AlmostGoodReadsContext.cs",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Models\\AlmostGoodReadsContext.cs",
+              "RelativeDocumentMoniker": "Models\\AlmostGoodReadsContext.cs",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Models\\AlmostGoodReadsContext.cs",
+              "RelativeToolTip": "Models\\AlmostGoodReadsContext.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAQwB8AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-27T16:45:31.197Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
               "Title": "Edit.cshtml.cs",
               "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Edit.cshtml.cs",
               "RelativeDocumentMoniker": "Pages\\Library\\Edit.cshtml.cs",
@@ -501,77 +940,95 @@
               "RelativeToolTip": "Pages\\Library\\Edit.cshtml.cs",
               "ViewState": "AQIAAEoAAAAAAAAAAAAmwEsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-27T14:24:45.383Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-27T14:24:45.383Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Details.cshtml",
-              "RelativeDocumentMoniker": "Pages\\Library\\Details.cshtml",
-              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Details.cshtml",
-              "RelativeToolTip": "Pages\\Library\\Details.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABoAAABbAAAA",
+              "DocumentIndex": 35,
+              "Title": "Book.cs",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Models\\Book.cs",
+              "RelativeDocumentMoniker": "Models\\Book.cs",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Models\\Book.cs",
+              "RelativeToolTip": "Models\\Book.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAA3wBsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-27T16:50:01.634Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-24T04:29:53.253Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-27T14:28:31.793Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "bookScripts.js",
-              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\js\\bookScripts.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\bookScripts.js",
-              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\wwwroot\\js\\bookScripts.js",
-              "RelativeToolTip": "wwwroot\\js\\bookScripts.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-04-27T14:28:57.842Z",
-              "EditorCaption": ""
+              "DocumentIndex": 11,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Library\\Edit.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Edit.cshtml",
+              "RelativeToolTip": "Pages\\Library\\Edit.cshtml",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAmwEEAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-27T14:26:40.287Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 24,
               "Title": "_ReviewSummary.cshtml",
               "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookDetailsPage\\_ReviewSummary.cshtml",
               "RelativeDocumentMoniker": "Pages\\Shared\\BookDetailsPage\\_ReviewSummary.cshtml",
               "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookDetailsPage\\_ReviewSummary.cshtml",
               "RelativeToolTip": "Pages\\Shared\\BookDetailsPage\\_ReviewSummary.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAVAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABYAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-24T04:29:57.982Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-24T04:29:57.982Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Create.cshtml",
-              "RelativeDocumentMoniker": "Pages\\Library\\Create.cshtml",
-              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Create.cshtml",
-              "RelativeToolTip": "Pages\\Library\\Create.cshtml",
-              "ViewState": "AQIAADAAAAAAAAAAAAAAAEEAAAAIAAAA",
+              "DocumentIndex": 37,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Reviews\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Reviews\\Edit.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Reviews\\Edit.cshtml",
+              "RelativeToolTip": "Pages\\Reviews\\Edit.cshtml",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-27T14:27:46.454Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-24T11:51:45.857Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Books.cshtml",
               "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Admin\\Books.cshtml",
               "RelativeDocumentMoniker": "Pages\\Admin\\Books.cshtml",
               "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Admin\\Books.cshtml",
               "RelativeToolTip": "Pages\\Admin\\Books.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAABmAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAACEAAABmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-27T14:30:51.435Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-27T14:30:51.435Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 38,
+              "Title": "_BookMetadata.cshtml",
+              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookDetailsPage\\_BookMetadata.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Shared\\BookDetailsPage\\_BookMetadata.cshtml",
+              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookDetailsPage\\_BookMetadata.cshtml",
+              "RelativeToolTip": "Pages\\Shared\\BookDetailsPage\\_BookMetadata.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-27T14:32:19.29Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
               "Title": "_BookHeader.cshtml",
               "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookDetailsPage\\_BookHeader.cshtml",
               "RelativeDocumentMoniker": "Pages\\Shared\\BookDetailsPage\\_BookHeader.cshtml",
@@ -579,12 +1036,11 @@
               "RelativeToolTip": "Pages\\Shared\\BookDetailsPage\\_BookHeader.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-27T14:33:58.224Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-27T14:33:58.224Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 13,
               "Title": "_SortingControls.cshtml",
               "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookListPage\\_SortingControls.cshtml",
               "RelativeDocumentMoniker": "Pages\\Shared\\BookListPage\\_SortingControls.cshtml",
@@ -592,63 +1048,11 @@
               "RelativeToolTip": "Pages\\Shared\\BookListPage\\_SortingControls.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-27T14:31:27.723Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-27T14:31:27.723Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Reviews\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Pages\\Reviews\\Edit.cshtml",
-              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Reviews\\Edit.cshtml",
-              "RelativeToolTip": "Pages\\Reviews\\Edit.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-24T11:51:45.857Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Index.cshtml",
-              "RelativeDocumentMoniker": "Pages\\Library\\Index.cshtml",
-              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Index.cshtml",
-              "RelativeToolTip": "Pages\\Library\\Index.cshtml",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAAD4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-24T03:58:19.641Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAABKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-27T14:30:23.414Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "Pages\\Library\\Index.cshtml.cs",
-              "ToolTip": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Library\\Index.cshtml.cs",
-              "RelativeToolTip": "Pages\\Library\\Index.cshtml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-24T04:15:32.713Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 41,
               "Title": "Register.cshtml.cs",
               "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Auth\\Register.cshtml.cs",
               "RelativeDocumentMoniker": "Pages\\Auth\\Register.cshtml.cs",
@@ -660,7 +1064,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 42,
               "Title": "_PageHeader.cshtml",
               "DocumentMoniker": "D:\\Document\\Eppede\\PRN222\\PRN222_Project\\BookReviewWeb\\Pages\\Shared\\BookListPage\\_PageHeader.cshtml",
               "RelativeDocumentMoniker": "Pages\\Shared\\BookListPage\\_PageHeader.cshtml",

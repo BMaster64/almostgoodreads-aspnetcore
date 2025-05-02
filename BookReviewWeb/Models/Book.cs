@@ -21,5 +21,7 @@ public partial class Book
 
     public virtual Genre? Genre { get; set; }
 
+    public virtual ICollection<MyBook> MyBooks { get; set; } = new List<MyBook>();
+
     public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
 }

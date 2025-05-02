@@ -28,7 +28,7 @@ namespace BookReviewWeb.Pages.Reviews
 
         public int TotalReviews { get; set; }
         public int TotalPages { get; set; }
-        public int ReviewsPerPage { get; set; } = 10;
+        public int ReviewsPerPage { get; set; } = 5;
         
         // Dictionary to store user review counts
         public Dictionary<int, int> UserReviewCounts { get; set; } = new Dictionary<int, int>();

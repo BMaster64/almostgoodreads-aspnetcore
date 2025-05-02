@@ -44,6 +44,23 @@ CREATE TABLE Genres (
     GenreName NVARCHAR(100) NOT NULL UNIQUE
 );
 
+-- 5. User Books (for tracking user book collections)
+CREATE TABLE MyBooks (
+    Id INT IDENTITY PRIMARY KEY,
+    UserId INT NOT NULL
+        REFERENCES Users(Id)
+        ON DELETE CASCADE,
+    BookId INT NOT NULL
+        REFERENCES Books(Id)
+        ON DELETE CASCADE,
+    Status INT NOT NULL
+        CHECK (Status BETWEEN 1 AND 4),
+    -- 1: Plan to read, 2: Currently reading, 3: Dropped, 4: Completed
+    DateAdded DATETIME2 NOT NULL
+        DEFAULT SYSUTCDATETIME(),
+    CONSTRAINT UQ_UserBook UNIQUE (UserId, BookId)
+);
+
 -- ====================================
 -- Example CRUD queries for each feature
 -- ====================================

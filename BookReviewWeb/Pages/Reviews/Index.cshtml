@@ -72,7 +72,7 @@
                                         <span class="ms-2 fw-bold">@(review.Rating ?? 0)/5</span>
                                     </div>
                                     
-                                    <p class="review-text">@review.Comment</p>
+                                    <p class="review-text mb-0">@(review.Comment.Length > 250 ? review.Comment.Substring(0, 250) + "..." : review.Comment)</p>
                                     
                                     <div class="d-flex justify-content-between align-items-center mt-3">
                                         <div class="text-muted small">

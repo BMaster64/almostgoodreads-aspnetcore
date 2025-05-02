@@ -25,6 +25,52 @@
                         <partial name="BookDetailsPage/_BookDescription" model="Model.Book" />
 
                         <partial name="BookDetailsPage/_BookMetadata" model="Model.Book" />
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="dropdown my-2">
+                                <button class="btn btn-primary dropdown-toggle" type="button" id="addToMyBooksButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @if (Model.UserBookEntry != null)
+                                    {
+                                        @BookReviewWeb.Pages.User.MyBooksModel.GetStatusName(Model.UserBookEntry.Status)
+                                    }
+                                    else
+                                    {
+                                        <text>Add to My Books</text>
+                                    }
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="addToMyBooksButton">
+                                    <li>
+                                        <form method="post" asp-page-handler="AddToMyBooks" asp-route-bookId="@Model.Book.Id" asp-route-status="1">
+                                            <button type="submit" class="dropdown-item">Plan to Read</button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form method="post" asp-page-handler="AddToMyBooks" asp-route-bookId="@Model.Book.Id" asp-route-status="2">
+                                            <button type="submit" class="dropdown-item">Currently Reading</button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form method="post" asp-page-handler="AddToMyBooks" asp-route-bookId="@Model.Book.Id" asp-route-status="3">
+                                            <button type="submit" class="dropdown-item">Dropped</button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form method="post" asp-page-handler="AddToMyBooks" asp-route-bookId="@Model.Book.Id" asp-route-status="4">
+                                            <button type="submit" class="dropdown-item">Completed</button>
+                                        </form>
+                                    </li>
+                                    @if (Model.UserBookEntry != null)
+                                    {
+                                        <li><hr class="dropdown-divider" /></li>
+                                        <li>
+                                            <form method="post" asp-page-handler="RemoveFromMyBooks" asp-route-bookId="@Model.Book.Id">
+                                                <button type="submit" class="dropdown-item text-danger">Remove from My Books</button>
+                                            </form>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -60,7 +106,7 @@
                         </div>
                         
                         <div class="mb-3">
-                            <label asp-for="ReviewInput.Comment" class="form-label">Comment</label>
+                            <label asp-for="ReviewInput.Comment" class="form-label">Content</label>
                             <textarea asp-for="ReviewInput.Comment" class="form-control" rows="3"></textarea>
                             <span asp-validation-for="ReviewInput.Comment" class="text-danger"></span>
                         </div>
@@ -131,7 +177,7 @@
                         
                         <!-- Modal for full review -->
                         <div class="modal fade" id="reviewModal-@review.Id" tabindex="-1" aria-labelledby="reviewModalLabel-@review.Id" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <div>
@@ -242,7 +288,11 @@
         .review-text-truncated:hover::after {
             display: inline;
         }
-        
+
+        .review-content p {
+            white-space: pre-wrap;
+        }
+
         .user-review-count {
             font-size: 0.75rem;
             cursor: help;

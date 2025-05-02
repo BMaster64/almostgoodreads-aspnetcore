@@ -19,6 +19,8 @@ public partial class AlmostGoodReadsContext : DbContext
 
     public virtual DbSet<Genre> Genres { get; set; }
 
+    public virtual DbSet<MyBook> MyBooks { get; set; }
+
     public virtual DbSet<Review> Reviews { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
@@ -51,6 +53,23 @@ public partial class AlmostGoodReadsContext : DbContext
             entity.HasIndex(e => e.GenreName, "UQ__Genres__BBE1C33958F9AB95").IsUnique();
 
             entity.Property(e => e.GenreName).HasMaxLength(100);
+        });
+
+        modelBuilder.Entity<MyBook>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__MyBooks__3214EC0703FAEE72");
+
+            entity.HasIndex(e => new { e.UserId, e.BookId }, "UQ_UserBook").IsUnique();
+
+            entity.Property(e => e.DateAdded).HasDefaultValueSql("(sysutcdatetime())");
+
+            entity.HasOne(d => d.Book).WithMany(p => p.MyBooks)
+                .HasForeignKey(d => d.BookId)
+                .HasConstraintName("FK__MyBooks__BookId__71D1E811");
+
+            entity.HasOne(d => d.User).WithMany(p => p.MyBooks)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK__MyBooks__UserId__70DDC3D8");
         });
 
         modelBuilder.Entity<Review>(entity =>
