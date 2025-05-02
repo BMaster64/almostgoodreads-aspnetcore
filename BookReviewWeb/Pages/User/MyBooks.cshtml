@@ -83,6 +83,9 @@
                                                 <h5 class="card-title text-truncate" title="@myBook.Book.Title">@myBook.Book.Title</h5>
                                             </a>
                                             <p class="card-text text-truncate" title="by @myBook.Book.Author">by @myBook.Book.Author</p>
+                                            
+                                            <!-- Add Rating Display -->
+                                            <partial name="BookListPage/_BookRating" model="@myBook.Book" />
                                         </div>
                                         <div class="card-footer bg-transparent border-top-0">
                                             <div class="dropdown w-100">

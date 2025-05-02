@@ -49,6 +49,10 @@
                                                 <h5 class="mb-1">@book.Title</h5>
                                             </a>
                                             <p class="text-muted mb-1">by @book.Author</p>
+                                            
+                                            <!-- Add Rating Display -->
+                                            <partial name="BookListPage/_BookRating" model="@book" />
+                                            
                                             <p class="small mb-0">
                                                 <span class="badge bg-secondary">@(book.Genre?.GenreName ?? "Uncategorized")</span>
                                             </p>

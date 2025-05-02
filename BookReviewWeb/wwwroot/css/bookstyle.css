@@ -111,3 +111,27 @@ a {
         padding: 4px 8px;
     }
 }
+
+/* Book Rating Styles */
+.rating-container {
+    margin-bottom: 10px;
+}
+
+.ratings {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.rating-text {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.fa-star, .fa-star-half-stroke {
+    font-size: 0.9rem;
+    margin-right: 1px;
+}
+
+.text-warning {
+    color: #ffc107 !important;
+}

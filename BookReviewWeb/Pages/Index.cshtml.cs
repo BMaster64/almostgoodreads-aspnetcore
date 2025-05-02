@@ -26,7 +26,8 @@ namespace BookReviewWeb.Pages
             // Get 5 latest books
             LatestBooks = await _context.Books
                 .Include(b => b.Genre)
-                .OrderByDescending(b => b.PublishYear) // Assuming newer books have higher IDs
+                .Include(b => b.Reviews)
+                .OrderByDescending(b => b.PublishYear)
                 .Take(5)
                 .ToListAsync();
 

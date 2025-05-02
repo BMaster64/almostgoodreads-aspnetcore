@@ -45,6 +45,9 @@
         <div class="card-body">
             <a asp-page="./Details" asp-route-id="@Model.Id"><h5 class="card-title text-truncate" title="@Model.Title">@Model.Title</h5></a>
             <p class="card-text text-truncate" title="by @Model.Author">by @Model.Author</p>
+            
+            <!-- Add Rating Display -->
+            <partial name="BookListPage/_BookRating" model="@Model" />
         </div>
         <div class="card-footer bg-transparent border-top-0">
             @if (isAuthenticated)
