@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-md-4">
                     <form method="get" class="d-flex">
-                        <select asp-for="GenreFilter" asp-items="@(new SelectList(Model.Genres, "Id", "GenreName"))" class="form-select me-2">
+                        <select asp-for="GenreFilter" asp-items="@(new SelectList(Model.Genres, "GenreId", "GenreName"))" class="form-select me-2">
                             <option value="">All Genres</option>
                         </select>
                         <button type="submit" class="btn btn-outline-secondary">Filter</button>
@@ -94,7 +94,7 @@
                                     </td>
                                     <td>@book.Author</td>
                                     <td>@book.PublishYear</td>
-                                    <td>@(book.Genre?.GenreName ?? "None")</td>
+                                    <td>@(string.Join(", ", book.Genres.Select(g => g.GenreName)))</td>
                                     <td>
                                         <div class="btn-group">
                                             <a asp-page="/Library/Edit" asp-route-id="@book.Id" class="btn btn-sm btn-outline-primary">

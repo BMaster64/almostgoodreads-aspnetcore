@@ -41,3 +41,38 @@
         min-height: 300px;
     }
 }
+
+/* Styling for book rating in details page */
+.ratings {
+    display: inline-flex;
+    align-items: center;
+}
+
+.rating-details {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.rating-review-link {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.rating-review-link:hover {
+    text-decoration: underline;
+}
+
+.fa-star, .fa-star-half-stroke {
+    font-size: 1.1rem;
+    margin-right: 2px;
+}
+
+.text-warning {
+    color: #ffc107 !important;
+}
+
+.genre-checkbox-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}

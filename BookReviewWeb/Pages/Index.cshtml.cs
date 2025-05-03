@@ -1,20 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using BookReviewWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookReviewWeb.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly AlmostGoodReadsContext _context;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(AlmostGoodReadsContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public void OnGet()
-        {
+        public IList<Book> LatestBooks { get; set; } = default!;
+        public IList<Review> LatestReviews { get; set; } = default!;
 
+        public async Task OnGetAsync()
+        {
+            // Get 5 latest books
+            LatestBooks = await _context.Books
+                .Include(b => b.Genres)
+                .Include(b => b.Reviews)
+                .OrderByDescending(b => b.PublishYear)
+                .Take(5)
+                .ToListAsync();
+
+            // Get 5 latest reviews
+            LatestReviews = await _context.Reviews
+                .Include(r => r.Book)
+                .Include(r => r.User)
+                .OrderByDescending(r => r.CreatedAt)
+                .Take(5)
+                .ToListAsync();
         }
     }
 }

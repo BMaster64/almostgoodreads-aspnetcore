@@ -1,0 +1,156 @@
+﻿@page
+@model BookReviewWeb.Pages.User.MyBooksModel
+@{
+    ViewData["Title"] = "My Book Collection";
+}
+<link rel="stylesheet" href="~/css/bookstyle.css" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card shadow-sm mb-4">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <i class="fas fa-user-circle fa-5x text-primary"></i>
+                    </div>
+                    <h3>@Model.CurrentUser.UserName</h3>
+                    <p class="text-muted">@Model.CurrentUser.Role</p>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a asp-page="/User/Profile" class="list-group-item list-group-item-action">
+                        <i class="fas fa-user me-2"></i> Profile
+                    </a>
+                    <a asp-page="/User/MyBooks" class="list-group-item list-group-item-action active">
+                        <i class="fas fa-book me-2"></i> My Books
+                    </a>
+                    <a asp-page="/User/MyReviews" class="list-group-item list-group-item-action">
+                        <i class="fas fa-star me-2"></i> My Reviews
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h2 class="mb-0">My Book Collection</h2>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="statusFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            @(Model.StatusFilter.HasValue ? MyBooksModel.GetStatusName(Model.StatusFilter.Value) : "All Books")
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="statusFilterDropdown">
+                            <li><a class="dropdown-item @(Model.StatusFilter == null ? "active" : "")" asp-page="/User/MyBooks">All Books</a></li>
+                            <li><a class="dropdown-item @(Model.StatusFilter == 1 ? "active" : "")" asp-page="/User/MyBooks" asp-route-statusFilter="1">Plan to Read</a></li>
+                            <li><a class="dropdown-item @(Model.StatusFilter == 2 ? "active" : "")" asp-page="/User/MyBooks" asp-route-statusFilter="2">Currently Reading</a></li>
+                            <li><a class="dropdown-item @(Model.StatusFilter == 3 ? "active" : "")" asp-page="/User/MyBooks" asp-route-statusFilter="3">Dropped</a></li>
+                            <li><a class="dropdown-item @(Model.StatusFilter == 4 ? "active" : "")" asp-page="/User/MyBooks" asp-route-statusFilter="4">Completed</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @if (!Model.MyBooks.Any())
+                    {
+                        <div class="text-center py-5">
+                            <i class="fas fa-book fa-4x text-muted mb-3"></i>
+                            <h4>No books in your collection</h4>
+                            <p class="text-muted">Start adding books to your collection from the library!</p>
+                            <a asp-page="/Library/Index" class="btn btn-primary mt-2">Browse Library</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+                            @foreach (var myBook in Model.MyBooks)
+                            {
+                                <div class="col">
+                                    <div class="card h-100 book-card">
+                                        <div class="card-img-top book-cover-container">
+                                            @if (!string.IsNullOrEmpty(myBook.Book.CoverImageUrl))
+                                            {
+                                                <a asp-page="/Library/Details" asp-route-id="@myBook.BookId">
+                                                    <img src="@myBook.Book.CoverImageUrl" class="book-cover" alt="@myBook.Book.Title cover">
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <div class="placeholder-cover">
+                                                    <span>@myBook.Book.Title</span>
+                                                </div>
+                                            }
+                                            <div class="status-badge status-@myBook.Status">@MyBooksModel.GetStatusName(myBook.Status)</div>
+                                        </div>
+                                        <div class="card-body">
+                                            <a asp-page="/Library/Details" asp-route-id="@myBook.BookId">
+                                                <h5 class="card-title text-truncate" title="@myBook.Book.Title">@myBook.Book.Title</h5>
+                                            </a>
+                                            <p class="card-text text-truncate" title="by @myBook.Book.Author">by @myBook.Book.Author</p>
+                                            
+                                            <!-- Add Rating Display -->
+                                            <partial name="BookListPage/_BookRating" model="@myBook.Book" />
+                                        </div>
+                                        <div class="card-footer bg-transparent border-top-0">
+                                            <div class="dropdown w-100">
+                                                <button class="btn btn-sm btn-outline-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    @MyBooksModel.GetStatusName(myBook.Status)
+                                                </button>
+                                                <ul class="dropdown-menu w-100">
+                                                    <li><a class="dropdown-item" href="#" onclick="updateBookStatus(@myBook.BookId, 1)">Plan to Read</a></li>
+                                                    <li><a class="dropdown-item" href="#" onclick="updateBookStatus(@myBook.BookId, 2)">Currently Reading</a></li>
+                                                    <li><a class="dropdown-item" href="#" onclick="updateBookStatus(@myBook.BookId, 3)">Dropped</a></li>
+                                                    <li><a class="dropdown-item" href="#" onclick="updateBookStatus(@myBook.BookId, 4)">Completed</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item text-danger" href="#" onclick="removeFromMyBooks(@myBook.BookId)">Remove from My Books</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.AntiForgeryToken()
+@section Scripts {
+    <script>
+        function updateBookStatus(bookId, status) {
+            fetch('/api/mybooks/update', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                },
+                body: JSON.stringify({ bookId: bookId, status: status })
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert('Failed to update book status. Please try again.');
+                }
+            });
+        }
+
+        function removeFromMyBooks(bookId) {
+            if (confirm('Are you sure you want to remove this book from your collection?')) {
+                fetch('/api/mybooks/remove', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]').value
+                    },
+                    body: JSON.stringify({ bookId: bookId })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.reload();
+                    } else {
+                        alert('Failed to remove book. Please try again.');
+                    }
+                });
+            }
+        }
+    </script>
+}

@@ -9,5 +9,4 @@
         <li><a class="dropdown-item @(Model.SortOrder == "title" ? "active" : "")" href="?SortOrder=title&SearchTerm=@Model.SearchTerm&SearchType=@Model.SearchType&GenreFilter=@Model.GenreFilter">Title (A-Z)</a></li>
         <li><a class="dropdown-item @(Model.SortOrder == "author" ? "active" : "")" href="?SortOrder=author&SearchTerm=@Model.SearchTerm&SearchType=@Model.SearchType&GenreFilter=@Model.GenreFilter">Author (A-Z)</a></li>
     </ul>
-</div>
-<a asp-page="Create" class="btn btn-primary ms-2">Add Book</a>
+</div> 

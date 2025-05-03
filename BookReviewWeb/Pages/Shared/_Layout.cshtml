@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="~/BookReviewWeb.styles.css" asp-append-version="true" />
     <!-- Add Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Add Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 <body>
     <header>
@@ -54,14 +56,13 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                                     <li><a class="dropdown-item" asp-page="/User/Profile">My Profile</a></li>
-                                    @if (User.IsInRole("User"))
-                                    {
-                                        <li><a class="dropdown-item" asp-page="/User/MyReviews">My Reviews</a></li>
-                                    }
+                                    <li><a class="dropdown-item" asp-page="/User/MyBooks">My Books</a></li>
+                                    <li><a class="dropdown-item" asp-page="/User/MyReviews">My Reviews</a></li>
                                     @if (User.IsInRole("Admin"))
                                     {
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" asp-page="/Admin/Books">Manage Books</a></li>
+                                        <li><a class="dropdown-item" asp-page="/Admin/Genres">Manage Genres</a></li>
                                         <li><a class="dropdown-item" asp-page="/Admin/Reviews">Manage Reviews</a></li>
                                     }
                                     <li><hr class="dropdown-divider"></li>

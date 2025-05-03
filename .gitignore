@@ -52,3 +52,5 @@ node_modules/
 
 # Optional: ignore custom config files
 appsettings.json
+BookReviewWeb/appsettings.json
+BookReviewWeb/bin/Debug/net8.0/appsettings.json

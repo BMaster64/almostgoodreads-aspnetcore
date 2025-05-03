@@ -1,8 +1,45 @@
 ﻿@model BookReviewWeb.Models.Book
-<h1 class="card-title mb-1">@Model.Title</h1>
-<h5 class="card-subtitle mb-3 text-muted">by @Model.Author</h5>
 
-<div class="mb-4">
-    <span class="badge bg-primary me-2">@(Model.Genre?.GenreName ?? "Uncategorized")</span>
-    <span class="badge bg-secondary">@(Model.PublishYear?.ToString() ?? "Unknown Year")</span>
+@{
+    // Calculate average rating
+    double averageRating = Model.Reviews.Any() ? Model.Reviews.Average(r => r.Rating ?? 0) : 0;
+    int reviewCount = Model.Reviews.Count;
+    bool hasReviews = reviewCount > 0;
+}
+
+<h1 class="card-title mb-1">@Model.Title</h1>
+<h5 class="card-subtitle mb-2 text-muted">by @Model.Author</h5>
+
+<!-- Add Rating Display -->
+<div class="mb-3">
+    <div class="d-flex align-items-center">
+        <div class="ratings me-2">
+            @for (int i = 1; i <= 5; i++)
+            {
+                if (i <= averageRating)
+                {
+                    <i class="fa-solid fa-star text-warning"></i>
+                }
+                else if (i - 0.5 <= averageRating)
+                {
+                    <i class="fa-solid fa-star-half-stroke text-warning"></i>
+                }
+                else
+                {
+                    <i class="fa-regular fa-star text-muted"></i>
+                }
+            }
+        </div>
+        @if (hasReviews)
+        {
+            <span class="rating-details">
+                @averageRating.ToString("F1") 
+                (<a href="#reviews" class="rating-review-link">@reviewCount @(reviewCount == 1 ? "review" : "reviews")</a>)
+            </span>
+        }
+        else
+        {
+            <span class="rating-details">No reviews yet</span>
+        }
+    </div>
 </div>

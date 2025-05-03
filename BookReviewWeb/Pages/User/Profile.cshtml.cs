@@ -45,6 +45,7 @@ namespace BookReviewWeb.Pages.User
 
         public int ReviewCount { get; set; }
         public double AverageRating { get; set; }
+        public int BooksInCollection { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
@@ -70,6 +71,7 @@ namespace BookReviewWeb.Pages.User
             ReviewCount = CurrentUser.Reviews.Count;
             AverageRating = CurrentUser.Reviews.Any() ? 
                 CurrentUser.Reviews.Average(r => r.Rating ?? 0) : 0;
+            BooksInCollection = await _context.MyBooks.CountAsync(mb => mb.UserId == userId);
 
             return Page();
         }
@@ -97,7 +99,8 @@ namespace BookReviewWeb.Pages.User
                 ReviewCount = user.Reviews.Count;
                 AverageRating = user.Reviews.Any() ? 
                     user.Reviews.Average(r => r.Rating ?? 0) : 0;
-                
+                BooksInCollection = await _context.MyBooks.CountAsync(mb => mb.UserId == userId);
+
                 return Page();
             }
 

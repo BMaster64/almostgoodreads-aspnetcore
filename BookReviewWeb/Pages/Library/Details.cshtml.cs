@@ -30,6 +30,7 @@ namespace BookReviewWeb.Pages.Library
 
         [BindProperty]
         public ReviewInputModel ReviewInput { get; set; }
+        public MyBook UserBookEntry { get; set; }
 
         public class ReviewInputModel
         {
@@ -40,7 +41,7 @@ namespace BookReviewWeb.Pages.Library
             public int Rating { get; set; }
 
             [Required(ErrorMessage = "Please enter a comment")]
-            [StringLength(1000, ErrorMessage = "Comment cannot exceed 1000 characters")]
+            [StringLength(10000, ErrorMessage = "Comment cannot exceed 10000 characters")]
             public string Comment { get; set; }
         }
 
@@ -52,7 +53,7 @@ namespace BookReviewWeb.Pages.Library
             }
 
             var book = await _context.Books
-                .Include(b => b.Genre)
+                .Include(b => b.Genres)
                 .Include(b => b.Reviews)
                 .ThenInclude(r => r.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -63,7 +64,13 @@ namespace BookReviewWeb.Pages.Library
             }
 
             Book = book;
-            
+            // Check if the user is logged in and has a MyBook entry for this book
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                UserBookEntry = await _context.MyBooks
+                    .FirstOrDefaultAsync(mb => mb.BookId == id && mb.UserId == userId);
+            }
             // Get user IDs from the reviews
             var userIds = Book.Reviews.Select(r => r.UserId).Distinct().ToList();
             
@@ -130,6 +137,71 @@ namespace BookReviewWeb.Pages.Library
 
             // Redirect to the same page to see the new review
             return RedirectToPage(new { id = ReviewInput.BookId });
+        }
+        public async Task<IActionResult> OnPostAddToMyBooksAsync(int bookId, int status)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("/Auth/Login", new { returnUrl = Request.Path });
+            }
+
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var existingEntry = await _context.MyBooks
+                .FirstOrDefaultAsync(mb => mb.BookId == bookId && mb.UserId == userId);
+
+            if (existingEntry != null)
+            {
+                // Update status if already exists
+                existingEntry.Status = status;
+                existingEntry.DateAdded = DateTime.Now;
+            }
+            else
+            {
+                var newEntry = new MyBook
+                {
+                    UserId = userId,
+                    BookId = bookId,
+                    Status = status,
+                    DateAdded = DateTime.Now
+                };
+                _context.MyBooks.Add(newEntry);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToPage(new { id = bookId });
+        }
+        public async Task<IActionResult> OnPostRemoveFromMyBooksAsync(int bookId)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("/Auth/Login", new { returnUrl = Request.Path });
+            }
+
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var existingEntry = await _context.MyBooks
+                .FirstOrDefaultAsync(mb => mb.BookId == bookId && mb.UserId == userId);
+
+            if (existingEntry != null)
+            {
+                _context.MyBooks.Remove(existingEntry);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToPage(new { id = bookId });
+        }
+        public static string GetStatusName(int status)
+        {
+            return status switch
+            {
+                1 => "Plan to Read",
+                2 => "Currently Reading",
+                3 => "Dropped",
+                4 => "Completed",
+                _ => "Unknown"
+            };
         }
     }
 }

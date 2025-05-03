@@ -1,0 +1,43 @@
+﻿<div class="dropdown my-2">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="addToMyBooksButton" data-bs-toggle="dropdown" aria-expanded="false">
+        @if (Model.UserBookEntry != null)
+        {
+            @BookReviewWeb.Pages.User.MyBooksModel.GetStatusName(Model.UserBookEntry.Status)
+        }
+        else
+        {
+            <text>Add to My Books</text>
+        }
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="addToMyBooksButton">
+        <li>
+            <form method="post" asp-page-handler="AddToMyBooks" asp-route-bookId="@Model.Book.Id" asp-route-status="1">
+                <button type="submit" class="dropdown-item">Plan to Read</button>
+            </form>
+        </li>
+        <li>
+            <form method="post" asp-page-handler="AddToMyBooks" asp-route-bookId="@Model.Book.Id" asp-route-status="2">
+                <button type="submit" class="dropdown-item">Currently Reading</button>
+            </form>
+        </li>
+        <li>
+            <form method="post" asp-page-handler="AddToMyBooks" asp-route-bookId="@Model.Book.Id" asp-route-status="3">
+                <button type="submit" class="dropdown-item">Dropped</button>
+            </form>
+        </li>
+        <li>
+            <form method="post" asp-page-handler="AddToMyBooks" asp-route-bookId="@Model.Book.Id" asp-route-status="4">
+                <button type="submit" class="dropdown-item">Completed</button>
+            </form>
+        </li>
+        @if (Model.UserBookEntry != null)
+        {
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+                <form method="post" asp-page-handler="RemoveFromMyBooks" asp-route-bookId="@Model.Book.Id">
+                    <button type="submit" class="dropdown-item text-danger">Remove from My Books</button>
+                </form>
+            </li>
+        }
+    </ul>
+</div>

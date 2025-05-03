@@ -1,5 +1,23 @@
 ﻿@model BookReviewWeb.Models.Book
+@using System.Security.Claims
+@using BookReviewWeb.Models
+@inject BookReviewWeb.Models.AlmostGoodReadsContext Context
 
+@{
+    // Check if user is logged in
+    var isAuthenticated = User.Identity.IsAuthenticated;
+
+    // If authenticated, check if the book is already in user's collection
+    MyBook userBook = null;
+    int? bookStatus = null;
+
+    if (isAuthenticated)
+    {
+        var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+        userBook = Context.MyBooks.FirstOrDefault(mb => mb.UserId == userId && mb.BookId == Model.Id);
+        bookStatus = userBook?.Status;
+    }
+}
 
 <div class="col">
     <div class="card h-100 book-card">
@@ -14,14 +32,76 @@
                     <span>@Model.Title</span>
                 </div>
             }
-
+            @if (bookStatus.HasValue)
+            {
+                <div class="status-badge status-@bookStatus">
+                    @(bookStatus == 1 ? "Plan to Read" :
+                        bookStatus == 2 ? "Reading" :
+                        bookStatus == 3 ? "Dropped" :
+                        "Completed")
+                </div>
+            }
         </div>
         <div class="card-body">
             <a asp-page="./Details" asp-route-id="@Model.Id"><h5 class="card-title text-truncate" title="@Model.Title">@Model.Title</h5></a>
             <p class="card-text text-truncate" title="by @Model.Author">by @Model.Author</p>
+            
+            <!-- Add Rating Display -->
+            <partial name="BookListPage/_BookRating" model="@Model" />
+
+            <!-- Replace the genre display part with this -->
+            <span class="badge bg-secondary">
+                @if (Model.Genres != null && Model.Genres.Any())
+                {
+                    @string.Join(", ", Model.Genres.Take(2).Select(g => g.GenreName))
+                    @if(Model.Genres.Count > 2)
+                    {
+                        <text>...</text>
+                    }
+                }
+                else
+                {
+                    <text>Uncategorized</text>
+                }
+            </span>
         </div>
         <div class="card-footer bg-transparent border-top-0">
-            <a asp-page="./Details" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-primary w-100">View Details</a>
+            @if (isAuthenticated)
+            {
+                <div class="dropdown w-100">
+                    @if (bookStatus.HasValue)
+                    {
+                        <button class="btn btn-sm btn-outline-success dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-check-circle me-1"></i>
+                            @(bookStatus == 1 ? "Plan to Read" :
+                                bookStatus == 2 ? "Reading" :
+                                bookStatus == 3 ? "Dropped" :
+                                "Completed")
+                        </button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-sm btn-outline-primary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-plus me-1"></i> Add to My Books
+                        </button>
+                    }
+                    <ul class="dropdown-menu w-100">
+                        <li><a class="dropdown-item" href="#" onclick="addToMyBooks(@Model.Id, 1)">Plan to Read</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="addToMyBooks(@Model.Id, 2)">Currently Reading</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="addToMyBooks(@Model.Id, 3)">Dropped</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="addToMyBooks(@Model.Id, 4)">Completed</a></li>
+                        @if (bookStatus.HasValue)
+                        {
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="removeFromMyBooks(@Model.Id)">Remove from My List</a></li>
+                        }
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <a asp-page="./Details" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-primary w-100">View Details</a>
+            }
         </div>
     </div>
 </div>
