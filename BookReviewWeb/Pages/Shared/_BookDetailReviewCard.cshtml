@@ -1,0 +1,91 @@
+@model BookReviewWeb.Models.Review
+@{
+    var userReviewCount = (int)ViewData["UserReviewCount"];
+    var (upvotes, downvotes) = ((int, int))ViewData["ReviewVotes"];
+    var userVoteType = (int)ViewData["UserVoteType"];
+}
+
+<div class="review-item card mb-3 review-card" data-review-id="@Model.Id" onclick="openReviewModal(this)">
+    <!-- Card content -->
+    <div class="card-body">
+        <!-- Review header and content -->
+        <div class="review-content-area">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="d-flex align-items-center">
+                    <h5 class="mb-0 me-2">@Model.User.UserName</h5>
+                    <span class="badge bg-secondary user-review-count" 
+                        data-bs-toggle="tooltip" 
+                        data-bs-placement="right"
+                        title="@userReviewCount total reviews by this user">
+                        <i class="bi bi-pencil-fill me-1"></i>@userReviewCount
+                    </span>
+                </div>
+                <small class="text-muted">@Model.CreatedAt.ToString("MMM dd, yyyy")</small>
+            </div>
+            
+            <div class="rating mb-2">
+                @for (int i = 1; i <= 5; i++)
+                {
+                    <i class="bi @(i <= Model.Rating ? "bi-star-fill text-warning" : "bi-star text-muted")"></i>
+                }
+            </div>
+            
+            <p class="review-text">@Model.Comment</p>
+        </div>
+        
+        <!-- Review actions -->
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <div class="review-votes">
+                <form method="post" asp-page-handler="Vote" class="d-inline" onclick="event.stopPropagation()">
+                    <input type="hidden" name="reviewId" value="@Model.Id" />
+                    <input type="hidden" name="voteType" value="1" />
+                    <button type="submit" class="btn btn-sm @(userVoteType == 1 ? "btn-primary" : "btn-outline-primary")">
+                        <i class="bi bi-hand-thumbs-up-fill"></i> @upvotes
+                    </button>
+                </form>
+                
+                <form method="post" asp-page-handler="Vote" class="d-inline ms-2" onclick="event.stopPropagation()">
+                    <input type="hidden" name="reviewId" value="@Model.Id" />
+                    <input type="hidden" name="voteType" value="-1" />
+                    <button type="submit" class="btn btn-sm @(userVoteType == -1 ? "btn-danger" : "btn-outline-danger")">
+                        <i class="bi bi-hand-thumbs-down-fill"></i> @downvotes
+                    </button>
+                </form>
+            </div>
+            
+            @if (User.Identity.IsAuthenticated && 
+                (int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value) == Model.UserId || 
+                User.IsInRole("Admin")))
+            {
+                <div class="review-actions">
+                    <a asp-page="/Reviews/Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-primary" onclick="event.stopPropagation()">
+                        <i class="bi bi-pencil"></i> Edit
+                    </a>
+                    <a asp-page="/Reviews/Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-danger" onclick="event.stopPropagation()">
+                        <i class="bi bi-trash"></i> Delete
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Hidden review content for modal -->
+    <div class="d-none review-data">
+        <span class="review-username">@Model.User.UserName</span>
+        <span class="review-date">@Model.CreatedAt.ToString("MMM dd, yyyy")</span>
+        <span class="review-rating">@Model.Rating</span>
+        <span class="review-comment">@Model.Comment</span>
+        <span class="review-count">@userReviewCount</span>
+        <span class="review-upvotes">@upvotes</span>
+        <span class="review-downvotes">@downvotes</span>
+    </div>
+</div>
+
+<style>
+    .review-content-area {
+        padding-bottom: 8px;
+    }
+    .review-card {
+        cursor: pointer;
+    }
+</style> 

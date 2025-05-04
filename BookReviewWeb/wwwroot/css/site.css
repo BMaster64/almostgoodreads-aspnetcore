@@ -26,3 +26,27 @@ body {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
 }
+
+/* Review Card Fixes - Prevent nested anchor issues */
+.review-card-link {
+    display: block;
+    color: inherit;
+}
+
+.review-card-link a {
+    pointer-events: none;
+}
+
+/* Fix review cards with incorrect nesting */
+.review-list > .review-item {
+    display: block;
+    width: 100%;
+}
+
+/* Fix nested anchors in review items */
+.review-item a.review-card-link {
+    display: inline;
+    border: 0;
+    padding: 0;
+    background: transparent;
+}

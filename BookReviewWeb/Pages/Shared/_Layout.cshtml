@@ -99,6 +99,49 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    
+    <!-- Global JavaScript to fix review card structure -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fix for review cards with nested anchor tags
+            document.querySelectorAll('.review-list').forEach(function(reviewList) {
+                // Get all direct children of review-list
+                const reviewItems = reviewList.children;
+                
+                // Check if we have proper structure (should be 'a' tags directly under review-list)
+                Array.from(reviewItems).forEach(function(item, index) {
+                    if (item.tagName !== 'A' && item.classList.contains('review-item')) {
+                        // This is a review item div directly under review-list, not wrapped in an anchor
+                        // Find any nested anchors with the same href
+                        const nestedAnchors = item.querySelectorAll('a.review-card-link');
+                        if (nestedAnchors.length > 0) {
+                            const href = nestedAnchors[0].getAttribute('href');
+                            
+                            // Create a new anchor to wrap this item
+                            const wrapper = document.createElement('a');
+                            wrapper.setAttribute('href', href);
+                            wrapper.setAttribute('class', 'text-decoration-none review-card-link');
+                            
+                            // Replace the item with the wrapped version
+                            const parent = item.parentNode;
+                            parent.insertBefore(wrapper, item);
+                            wrapper.appendChild(item);
+                            
+                            // Remove all nested anchors with the same class
+                            nestedAnchors.forEach(function(anchor) {
+                                // Move children outside
+                                while (anchor.firstChild) {
+                                    anchor.parentNode.insertBefore(anchor.firstChild, anchor);
+                                }
+                                // Remove the empty anchor
+                                anchor.parentNode.removeChild(anchor);
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

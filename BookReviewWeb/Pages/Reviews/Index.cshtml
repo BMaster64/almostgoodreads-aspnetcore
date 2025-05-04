@@ -17,6 +17,9 @@
                     <option value="oldest">Oldest First</option>
                     <option value="highest">Highest Rating</option>
                     <option value="lowest">Lowest Rating</option>
+                    <option value="most_votes">Most Votes</option>
+                    <option value="most_upvotes">Most Upvotes</option>
+                    <option value="most_downvotes">Most Downvotes</option>
                 </select>
                 <button type="submit" class="btn btn-outline-primary">Sort</button>
             </form>
@@ -34,71 +37,9 @@
         <div class="review-list">
             @foreach (var review in Model.Reviews)
             {
-                <a asp-page="/Library/Details" asp-route-id="@review.BookId" class="text-decoration-none review-card-link">
-                    <div class="review-item card mb-3 shadow-sm">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-2 col-sm-3 mb-3 mb-sm-0">
-                                    <div class="book-cover-container text-center">
-                                        @if (!string.IsNullOrEmpty(review.Book.CoverImageUrl))
-                                        {
-                                            <img src="@review.Book.CoverImageUrl" class="img-fluid rounded book-cover-small" alt="@review.Book.Title">
-                                        }
-                                        else
-                                        {
-                                            <div class="placeholder-cover-small d-flex justify-content-center align-items-center bg-light rounded">
-                                                <i class="bi bi-book fs-3"></i>
-                                            </div>
-                                        }
-                                    </div>
-                                </div>
-                                <div class="col-md-10 col-sm-9">
-                                    <div class="d-flex justify-content-between align-items-center mb-2">
-                                        <div>
-                                            <h5 class="mb-0">@review.User.UserName</h5>
-                                            <small class="text-muted">
-                                                <i class="bi bi-book-fill me-1"></i>
-                                                @review.Book.Title by @review.Book.Author
-                                            </small>
-                                        </div>
-                                        <small class="text-muted">@review.CreatedAt.ToString("MMM dd, yyyy")</small>
-                                    </div>
-                                    
-                                    <div class="rating mb-2">
-                                        @for (int i = 1; i <= 5; i++)
-                                        {
-                                            <i class="fas @(i <= (review.Rating ?? 0) ? "fa-star text-warning" : "fa-star text-secondary")"></i>
-                                        }
-                                        <span class="ms-2 fw-bold">@(review.Rating ?? 0)/5</span>
-                                    </div>
-                                    
-                                    <p class="review-text mb-0">@(review.Comment.Length > 250 ? review.Comment.Substring(0, 250) + "..." : review.Comment)</p>
-                                    
-                                    <div class="d-flex justify-content-between align-items-center mt-3">
-                                        <div class="text-muted small">
-                                            <i class="bi bi-pencil-fill me-1"></i> 
-                                            @Model.UserReviewCounts[review.UserId] review@(Model.UserReviewCounts[review.UserId] != 1 ? "s" : "")
-                                        </div>
-                                        
-                                        @if (User.Identity.IsAuthenticated && 
-                                            (int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value) == review.UserId || 
-                                             User.IsInRole("Admin")))
-                                        {
-                                            <div class="review-actions" onclick="event.stopPropagation();">
-                                                <a asp-page="/Reviews/Edit" asp-route-id="@review.Id" class="btn btn-sm btn-outline-primary">
-                                                    <i class="bi bi-pencil"></i> Edit
-                                                </a>
-                                                <a asp-page="/Reviews/Delete" asp-route-id="@review.Id" class="btn btn-sm btn-outline-danger">
-                                                    <i class="bi bi-trash"></i> Delete
-                                                </a>
-                                            </div>
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                ViewData["UserReviewCount"] = Model.UserReviewCounts[review.UserId];
+                ViewData["ReviewVotes"] = Model.ReviewVoteCounts[review.Id];
+                <partial name="_ReviewCardLink" model="review" />
             }
         </div>
         
@@ -147,7 +88,12 @@
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
     }
     
-    .review-text {
+    .review-text-truncated {
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
         min-height: 50px;
     }
     
@@ -175,4 +121,49 @@
         position: relative;
         z-index: 10;
     }
-</style> 
+</style>
+
+@section Scripts {
+    <script>
+        // Immediate fix for review cards in this page
+        document.addEventListener('DOMContentLoaded', function() {
+            // This is a specific fix for the reviews page
+            var reviewList = document.querySelector('.review-list');
+            if (reviewList) {
+                // Check all immediate children of the review list
+                for (var i = 0; i < reviewList.children.length; i++) {
+                    var child = reviewList.children[i];
+                    
+                    // Check if this is a div with review-item class (incorrect structure)
+                    if (child.tagName === 'DIV' && child.classList.contains('review-item')) {
+                        // Find the nested a tag
+                        var nestedAnchor = child.querySelector('a.review-card-link');
+                        if (nestedAnchor) {
+                            var href = nestedAnchor.getAttribute('href');
+                            
+                            // Create proper wrapper
+                            var wrapper = document.createElement('a');
+                            wrapper.href = href;
+                            wrapper.className = 'text-decoration-none review-card-link d-block';
+                            
+                            // Replace the div with proper structure
+                            reviewList.insertBefore(wrapper, child);
+                            wrapper.appendChild(child);
+                            
+                            // Remove all nested anchors
+                            var allNestedAnchors = child.querySelectorAll('a.review-card-link');
+                            allNestedAnchors.forEach(function(anchor) {
+                                // If it has children, move them out
+                                while (anchor.firstChild) {
+                                    anchor.parentNode.insertBefore(anchor.firstChild, anchor);
+                                }
+                                // Remove the empty anchor
+                                anchor.parentNode.removeChild(anchor);
+                            });
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+} 

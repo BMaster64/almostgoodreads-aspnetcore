@@ -21,16 +21,23 @@ namespace BookReviewWeb.Pages.Library
         }
 
         public Book Book { get; set; } = default!;
-        public double AverageRating => Book.Reviews.Any() ? Book.Reviews.Average(r => r.Rating ?? 0) : 0;
+        public double AverageRating => Book.Reviews.Any() ? (double)Book.Reviews.Average(r => r.Rating) : 0;
         public int ReviewCount => Book.Reviews.Count;
         public bool HasReviews => Book.Reviews.Any();
         
         // Dictionary to store user review counts
         public Dictionary<int, int> UserReviewCounts { get; set; } = new Dictionary<int, int>();
+        
+        // Dictionary to store vote counts
+        public Dictionary<int, (int Upvotes, int Downvotes)> ReviewVoteCounts { get; set; } = new Dictionary<int, (int, int)>();
+        
+        // Dictionary to store current user's votes
+        public Dictionary<int, int> UserVotes { get; set; } = new Dictionary<int, int>();
+        
+        public MyBook UserBookEntry { get; set; }
 
         [BindProperty]
         public ReviewInputModel ReviewInput { get; set; }
-        public MyBook UserBookEntry { get; set; }
 
         public class ReviewInputModel
         {
@@ -41,7 +48,7 @@ namespace BookReviewWeb.Pages.Library
             public int Rating { get; set; }
 
             [Required(ErrorMessage = "Please enter a comment")]
-            [StringLength(10000, ErrorMessage = "Comment cannot exceed 10000 characters")]
+            [StringLength(1000, ErrorMessage = "Comment cannot exceed 1000 characters")]
             public string Comment { get; set; }
         }
 
@@ -52,25 +59,33 @@ namespace BookReviewWeb.Pages.Library
                 return NotFound();
             }
 
+            Console.WriteLine($"Debug: OnGetAsync - Loading book with ID {id}");
+            
+            // Clear EF Core tracking to ensure we get fresh data
+            _context.ChangeTracker.Clear();
+
+            // Improved query to properly load all nested data (simplified without nested comments)
             var book = await _context.Books
                 .Include(b => b.Genres)
                 .Include(b => b.Reviews)
-                .ThenInclude(r => r.User)
+                    .ThenInclude(r => r.User)
+                .Include(b => b.Reviews)
+                    .ThenInclude(r => r.ReviewVotes)
+                // Force load fresh data
+                .AsSplitQuery() // Split the query to avoid cartesian explosion
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (book == null)
             {
+                Console.WriteLine($"Debug: Book with ID {id} not found");
                 return NotFound();
             }
 
             Book = book;
-            // Check if the user is logged in and has a MyBook entry for this book
-            if (User.Identity.IsAuthenticated)
-            {
-                var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-                UserBookEntry = await _context.MyBooks
-                    .FirstOrDefaultAsync(mb => mb.BookId == id && mb.UserId == userId);
-            }
+            
+            // Debug information about loaded reviews
+            Console.WriteLine($"Debug: Book has {book.Reviews.Count} reviews");
+            
             // Get user IDs from the reviews
             var userIds = Book.Reviews.Select(r => r.UserId).Distinct().ToList();
             
@@ -87,7 +102,92 @@ namespace BookReviewWeb.Pages.Library
                 UserReviewCounts[item.UserId] = item.Count;
             }
             
+            // Calculate vote counts for each review
+            foreach (var review in Book.Reviews)
+            {
+                int upvotes = review.ReviewVotes.Count(v => v.VoteType == 1);
+                int downvotes = review.ReviewVotes.Count(v => v.VoteType == -1);
+                ReviewVoteCounts[review.Id] = (upvotes, downvotes);
+            }
+            
+            // Get current user's votes if authenticated
+            if (User.Identity.IsAuthenticated)
+            {
+                var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                
+                // Check if user has entry in MyBooks
+                UserBookEntry = await _context.MyBooks
+                    .FirstOrDefaultAsync(mb => mb.UserId == userId && mb.BookId == id);
+                
+                // Get user's votes for reviews in this book
+                var userVotes = await _context.ReviewVotes
+                    .Where(v => v.UserId == userId && Book.Reviews.Select(r => r.Id).Contains(v.ReviewId))
+                    .ToListAsync();
+                    
+                foreach (var vote in userVotes)
+                {
+                    UserVotes[vote.ReviewId] = vote.VoteType;
+                }
+            }
+            
             return Page();
+        }
+        
+        public async Task<IActionResult> OnPostVoteAsync(int reviewId, int voteType)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("/Auth/Login", new { returnUrl = Request.Path });
+            }
+            
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            
+            // Get the review
+            var review = await _context.Reviews
+                .Include(r => r.ReviewVotes)
+                .FirstOrDefaultAsync(r => r.Id == reviewId);
+                
+            if (review == null)
+            {
+                return NotFound();
+            }
+            
+            // Check if user has already voted on this review
+            var existingVote = await _context.ReviewVotes
+                .FirstOrDefaultAsync(v => v.ReviewId == reviewId && v.UserId == userId);
+                
+            if (existingVote != null)
+            {
+                // If same vote type, remove the vote (toggle)
+                if (existingVote.VoteType == voteType)
+                {
+                    _context.ReviewVotes.Remove(existingVote);
+                }
+                else
+                {
+                    // Change vote type
+                    existingVote.VoteType = voteType;
+                    existingVote.CreatedAt = DateTime.UtcNow;
+                }
+            }
+            else
+            {
+                // Create new vote
+                var newVote = new ReviewVote
+                {
+                    ReviewId = reviewId,
+                    UserId = userId,
+                    VoteType = voteType,
+                    CreatedAt = DateTime.UtcNow
+                };
+                
+                _context.ReviewVotes.Add(newVote);
+            }
+            
+            await _context.SaveChangesAsync();
+            
+            // Return to the book details page
+            return RedirectToPage(new { id = review.BookId });
         }
 
         public async Task<IActionResult> OnPostAsync()
