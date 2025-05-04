@@ -28,16 +28,21 @@ namespace BookReviewWeb.Pages.Reviews
 
         public int TotalReviews { get; set; }
         public int TotalPages { get; set; }
-        public int ReviewsPerPage { get; set; } = 5;
+        public int ReviewsPerPage { get; set; } = 10;
         
         // Dictionary to store user review counts
         public Dictionary<int, int> UserReviewCounts { get; set; } = new Dictionary<int, int>();
+        
+        // Dictionary to store vote counts for each review
+        public Dictionary<int, (int Upvotes, int Downvotes, int Total)> ReviewVoteCounts { get; set; } = 
+            new Dictionary<int, (int, int, int)>();
 
         public async Task OnGetAsync()
         {
             var reviewsQuery = _context.Reviews
                 .Include(r => r.Book)
                 .Include(r => r.User)
+                .Include(r => r.ReviewVotes)
                 .AsQueryable();
 
             // Apply sorting
@@ -46,6 +51,9 @@ namespace BookReviewWeb.Pages.Reviews
                 "oldest" => reviewsQuery.OrderBy(r => r.CreatedAt),
                 "highest" => reviewsQuery.OrderByDescending(r => r.Rating),
                 "lowest" => reviewsQuery.OrderBy(r => r.Rating),
+                "most_votes" => reviewsQuery.OrderByDescending(r => r.ReviewVotes.Count),
+                "most_upvotes" => reviewsQuery.OrderByDescending(r => r.ReviewVotes.Count(v => v.VoteType == 1)),
+                "most_downvotes" => reviewsQuery.OrderByDescending(r => r.ReviewVotes.Count(v => v.VoteType == -1)),
                 _ => reviewsQuery.OrderByDescending(r => r.CreatedAt) // Default to newest
             };
 
@@ -77,6 +85,15 @@ namespace BookReviewWeb.Pages.Reviews
             foreach (var item in userReviewCounts)
             {
                 UserReviewCounts[item.UserId] = item.Count;
+            }
+            
+            // Calculate vote counts for each review
+            foreach (var review in Reviews)
+            {
+                int upvotes = review.ReviewVotes.Count(v => v.VoteType == 1);
+                int downvotes = review.ReviewVotes.Count(v => v.VoteType == -1);
+                int total = upvotes - downvotes;
+                ReviewVoteCounts[review.Id] = (upvotes, downvotes, total);
             }
         }
     }

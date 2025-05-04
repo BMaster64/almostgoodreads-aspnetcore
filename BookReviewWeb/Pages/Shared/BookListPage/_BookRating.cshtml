@@ -2,7 +2,7 @@
 
 @{
     // Calculate average rating
-    double averageRating = Model.Reviews.Any() ? Model.Reviews.Average(r => r.Rating ?? 0) : 0;
+    double averageRating = Model.Reviews.Any() ? (double)Model.Reviews.Average(r => r.Rating) : 0;
     int reviewCount = Model.Reviews.Count;
     bool hasReviews = reviewCount > 0;
 }

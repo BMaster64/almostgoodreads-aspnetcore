@@ -70,7 +70,7 @@ namespace BookReviewWeb.Pages.Library
                 "oldest" => booksQuery.OrderBy(b => b.PublishYear),
                 "title" => booksQuery.OrderBy(b => b.Title),
                 "author" => booksQuery.OrderBy(b => b.Author),
-                "rating" => booksQuery.OrderByDescending(b => b.Reviews.Any() ? b.Reviews.Average(r => r.Rating ?? 0) : 0),
+                "rating" => booksQuery.OrderByDescending(b => b.Reviews.Any() ? (double)b.Reviews.Average(r => r.Rating) : 0),
                 _ => booksQuery.OrderByDescending(b => b.PublishYear) // default to newest
             };
 

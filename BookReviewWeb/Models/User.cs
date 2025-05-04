@@ -15,5 +15,7 @@ public partial class User
 
     public virtual ICollection<MyBook> MyBooks { get; set; } = new List<MyBook>();
 
+    public virtual ICollection<ReviewVote> ReviewVotes { get; set; } = new List<ReviewVote>();
+
     public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
 }
