@@ -176,6 +176,53 @@
     </div>
 </div>
 
+<!-- Review Modal -->
+<div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reviewModalLabel">Review Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="review-modal-content">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="d-flex align-items-center">
+                            <h4 class="modal-username mb-0 me-2"></h4>
+                            <span class="badge bg-secondary modal-review-count">
+                                <i class="bi bi-pencil-fill me-1"></i><span class="count-value"></span>
+                            </span>
+                        </div>
+                        <span class="text-muted modal-date"></span>
+                    </div>
+                    
+                    <div class="rating mb-3">
+                        <span class="modal-rating"></span>
+                    </div>
+                    
+                    <div class="review-content mb-4">
+                        <p class="modal-comment"></p>
+                    </div>
+                    
+                    <div class="review-stats d-flex">
+                        <div class="me-3">
+                            <i class="bi bi-hand-thumbs-up-fill text-primary"></i>
+                            <span class="modal-upvotes"></span> upvotes
+                        </div>
+                        <div>
+                            <i class="bi bi-hand-thumbs-down-fill text-danger"></i>
+                            <span class="modal-downvotes"></span> downvotes
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
     <style>
@@ -231,6 +278,42 @@
         }
     </style>
     <script>
+        // Function to open review modal - globally accessible
+        function openReviewModal(reviewCard) {
+            const reviewData = reviewCard.querySelector('.review-data');
+            const username = reviewData.querySelector('.review-username').textContent;
+            const date = reviewData.querySelector('.review-date').textContent;
+            const rating = parseInt(reviewData.querySelector('.review-rating').textContent);
+            const comment = reviewData.querySelector('.review-comment').textContent;
+            const reviewCount = reviewData.querySelector('.review-count').textContent;
+            const upvotes = reviewData.querySelector('.review-upvotes').textContent;
+            const downvotes = reviewData.querySelector('.review-downvotes').textContent;
+            
+            // Set modal content
+            document.querySelector('.modal-username').textContent = username;
+            document.querySelector('.modal-date').textContent = date;
+            document.querySelector('.count-value').textContent = reviewCount;
+            document.querySelector('.modal-comment').textContent = comment;
+            document.querySelector('.modal-upvotes').textContent = upvotes;
+            document.querySelector('.modal-downvotes').textContent = downvotes;
+            
+            // Set rating stars
+            let starsHtml = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    starsHtml += '<i class="bi bi-star-fill text-warning me-1" style="font-size: 1.5rem;"></i>';
+                } else {
+                    starsHtml += '<i class="bi bi-star text-muted me-1" style="font-size: 1.5rem;"></i>';
+                }
+            }
+            starsHtml += `<span class="ms-2">${rating}/5</span>`;
+            document.querySelector('.modal-rating').innerHTML = starsHtml;
+            
+            // Show modal
+            const reviewModal = new bootstrap.Modal(document.getElementById('reviewModal'));
+            reviewModal.show();
+        }
+        
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize tooltips
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
