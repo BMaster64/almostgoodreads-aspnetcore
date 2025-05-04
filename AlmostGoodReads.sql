@@ -77,6 +77,22 @@ CREATE TABLE BookGenres (
         ON DELETE CASCADE,
     PRIMARY KEY (BookId, GenreId)
 );
+-- 7. Review Votes (for upvotes/downvotes on reviews)
+CREATE TABLE ReviewVotes (
+    Id INT IDENTITY PRIMARY KEY,
+    ReviewId INT NOT NULL
+        REFERENCES Reviews(Id)
+        ON DELETE CASCADE,
+    UserId INT NOT NULL
+        REFERENCES Users(Id)
+        ON DELETE NO ACTION, -- Changed from CASCADE to NO ACTION
+    VoteType INT NOT NULL
+        CHECK (VoteType IN (-1, 1)), -- -1 for downvote, 1 for upvote
+    CreatedAt DATETIME2 NOT NULL
+        DEFAULT SYSUTCDATETIME(),
+    CONSTRAINT UQ_UserReviewVote UNIQUE (UserId, ReviewId) -- Each user can vote once per review
+);
+
 
 -- ====================================
 -- Example CRUD queries for each feature
@@ -91,23 +107,23 @@ INSERT INTO Books (Title, Author, Description, Genre, PublishYear, CoverImageUrl
 VALUES (
   'The Great Gatsby',
   'F. Scott Fitzgerald',
-  'A portrait of the Jazz Age in all of its decadence…',
+  'A portrait of the Jazz Age in all of its decadenceâ€¦',
   'Classic',
   1925,
-  'https://…/gatsby.jpg'
+  'https://â€¦/gatsby.jpg'
 );
 
 -- C. List & search books
---    – All:
+--    â€“ All:
 SELECT * FROM Books;
---    – Filter by title substring or genre:
+--    â€“ Filter by title substring or genre:
 SELECT * FROM Books
  WHERE Title   LIKE '%gatsby%'
     OR Genre   = 'Classic';
 
 -- D. Edit a book (Admin only)
 UPDATE Books
-   SET Description   = 'New description…',
+   SET Description   = 'New descriptionâ€¦',
        PublishYear   = 1926
  WHERE Id = 1;
 
@@ -120,18 +136,18 @@ DELETE FROM Books
 -- G. Edit own review
 UPDATE Reviews
    SET Rating  = 4,
-       Comment = 'Actually, 4 stars—great but a bit slow in parts.'
+       Comment = 'Actually, 4 starsâ€”great but a bit slow in parts.'
  WHERE Id     = 3
    AND UserId = 1;   -- ensure user can only edit their own
 
 -- H. Delete a review (User or Admin)
---    – User deleting their own:
+--    â€“ User deleting their own:
 DELETE FROM Reviews
  WHERE Id     = 3
    AND UserId = 1;
---    – Admin deleting any:
+--    â€“ Admin deleting any:
 DELETE FROM Reviews
  WHERE Id = 3;
 
 -- I. (Optional) Like/dislike or report would require extra tables:
--- CREATE TABLE ReviewVotes ( … ), CREATE TABLE ReviewReports ( … )
+-- CREATE TABLE ReviewVotes ( â€¦ ), CREATE TABLE ReviewReports ( â€¦ )
