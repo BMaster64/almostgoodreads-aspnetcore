@@ -178,17 +178,48 @@
                                     <span class="read-more-hint">Click to read more</span>
                                 </div>
                                 
-                                @if (User.Identity.IsAuthenticated && int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value) == review.UserId || User.IsInRole("Admin"))
-                                {
-                                    <div class="review-actions mt-2" onclick="event.stopPropagation();">
-                                        <a asp-page="/Reviews/Edit" asp-route-id="@review.Id" class="btn btn-sm btn-outline-primary">
-                                            <i class="bi bi-pencil"></i> Edit
-                                        </a>
-                                        <a asp-page="/Reviews/Delete" asp-route-id="@review.Id" class="btn btn-sm btn-outline-danger">
-                                            <i class="bi bi-trash"></i> Delete
-                                        </a>
-                                    </div>
-                                }
+                                <div class="d-flex justify-content-between align-items-center">
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <div class="vote-controls" onclick="event.stopPropagation();">
+                                            @{
+                                                var userVote = Model.GetUserVoteForReview(review.Id);
+                                                var upvoteClass = userVote == 1 ? "active" : "";
+                                                var downvoteClass = userVote == 2 ? "active" : "";
+                                                var upvoteCount = Model.GetVoteCountForReview(review.Id, 1);
+                                                var downvoteCount = Model.GetVoteCountForReview(review.Id, 2);
+                                            }
+                                            <form method="post" asp-page-handler="VoteReview" asp-route-reviewId="@review.Id" asp-route-voteType="1" class="d-inline">
+                                                <button type="submit" class="btn btn-sm btn-vote @upvoteClass">
+                                                    <i class="bi bi-hand-thumbs-up-fill"></i> <span>@upvoteCount</span>
+                                                </button>
+                                            </form>
+                                            <form method="post" asp-page-handler="VoteReview" asp-route-reviewId="@review.Id" asp-route-voteType="2" class="d-inline">
+                                                <button type="submit" class="btn btn-sm btn-vote @downvoteClass">
+                                                    <i class="bi bi-hand-thumbs-down-fill"></i> <span>@downvoteCount</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="vote-counts">
+                                            <span class="text-muted">
+                                                <i class="bi bi-hand-thumbs-up-fill"></i> @Model.GetVoteCountForReview(review.Id, 1)
+                                                <i class="bi bi-hand-thumbs-down-fill ms-2"></i> @Model.GetVoteCountForReview(review.Id, 2)
+                                            </span>
+                                        </div>
+                                    }
+                                    
+                                    @if (User.Identity.IsAuthenticated && int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value) == review.UserId || User.IsInRole("Admin"))
+                                    {
+                                        <div class="review-actions mt-2" onclick="event.stopPropagation();">
+                                            <a asp-page="/Reviews/Delete" asp-route-id="@review.Id" class="btn btn-sm btn-outline-danger">
+                                                <i class="bi bi-trash"></i> Delete
+                                            </a>
+                                        </div>
+                                    }
+                                </div>
                             </div>
                         </div>
                         
@@ -224,13 +255,48 @@
                                         <div class="review-content">
                                             <p>@review.Comment</p>
                                         </div>
+                                        
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <div class="vote-controls mt-3">
+                                                @{
+                                                    var modalUserVote = Model.GetUserVoteForReview(review.Id);
+                                                    var modalUpvoteClass = modalUserVote == 1 ? "active" : "";
+                                                    var modalDownvoteClass = modalUserVote == 2 ? "active" : "";
+                                                    var modalUpvoteCount = Model.GetVoteCountForReview(review.Id, 1);
+                                                    var modalDownvoteCount = Model.GetVoteCountForReview(review.Id, 2);
+                                                }
+                                                <div class="d-flex align-items-center">
+                                                    <span class="me-3">Was this review helpful?</span>
+                                                    <form method="post" asp-page-handler="VoteReview" asp-route-reviewId="@review.Id" asp-route-voteType="1" class="d-inline">
+                                                        <button type="submit" class="btn btn-sm btn-vote @modalUpvoteClass">
+                                                            <i class="bi bi-hand-thumbs-up-fill"></i> <span>@modalUpvoteCount</span>
+                                                        </button>
+                                                    </form>
+                                                    <form method="post" asp-page-handler="VoteReview" asp-route-reviewId="@review.Id" asp-route-voteType="2" class="d-inline ms-2">
+                                                        <button type="submit" class="btn btn-sm btn-vote @modalDownvoteClass">
+                                                            <i class="bi bi-hand-thumbs-down-fill"></i> <span>@modalDownvoteCount</span>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="vote-counts mt-3">
+                                                <span class="text-muted">
+                                                    <i class="bi bi-hand-thumbs-up-fill"></i> @Model.GetVoteCountForReview(review.Id, 1)
+                                                    <i class="bi bi-hand-thumbs-down-fill ms-2"></i> @Model.GetVoteCountForReview(review.Id, 2)
+                                                </span>
+                                            </div>
+                                        }
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         @if (User.Identity.IsAuthenticated && int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value) == review.UserId || User.IsInRole("Admin"))
                                         {
-                                            <a asp-page="/Reviews/Edit" asp-route-id="@review.Id" class="btn btn-primary">
-                                                <i class="bi bi-pencil"></i> Edit
+                                            <a asp-page="/Reviews/Delete" asp-route-id="@review.Id" class="btn btn-danger">
+                                                <i class="bi bi-trash"></i> Delete
                                             </a>
                                         }
                                     </div>
@@ -312,7 +378,7 @@
             height: 20px;
             background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
         }
-
+        
         .review-content p {
             white-space: pre-wrap;
         }
@@ -320,6 +386,21 @@
         .user-review-count {
             font-size: 0.75rem;
             cursor: help;
+        }
+        
+        .btn-vote {
+            background-color: #f8f9fa;
+            border-color: #dee2e6;
+        }
+        
+        .btn-vote.active {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+        }
+        
+        .vote-controls {
+            margin-top: 10px;
         }
     </style>
     <script>

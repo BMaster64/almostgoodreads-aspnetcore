@@ -27,6 +27,9 @@ namespace BookReviewWeb.Pages.Library
         
         // Dictionary to store user review counts
         public Dictionary<int, int> UserReviewCounts { get; set; } = new Dictionary<int, int>();
+        
+        // Dictionary to store review votes
+        private Dictionary<int, List<ReviewVote>> ReviewVotes { get; set; } = new Dictionary<int, List<ReviewVote>>();
 
         [BindProperty]
         public ReviewInputModel ReviewInput { get; set; }
@@ -87,6 +90,18 @@ namespace BookReviewWeb.Pages.Library
                 UserReviewCounts[item.UserId] = item.Count;
             }
             
+            // Load review votes
+            var reviewIds = Book.Reviews.Select(r => r.Id).ToList();
+            var votes = await _context.ReviewVotes
+                .Where(rv => reviewIds.Contains(rv.ReviewId))
+                .ToListAsync();
+                
+            // Group votes by review
+            foreach (var reviewId in reviewIds)
+            {
+                ReviewVotes[reviewId] = votes.Where(v => v.ReviewId == reviewId).ToList();
+            }
+            
             return Page();
         }
 
@@ -138,6 +153,7 @@ namespace BookReviewWeb.Pages.Library
             // Redirect to the same page to see the new review
             return RedirectToPage(new { id = ReviewInput.BookId });
         }
+        
         public async Task<IActionResult> OnPostAddToMyBooksAsync(int bookId, int status)
         {
             if (!User.Identity.IsAuthenticated)
@@ -172,6 +188,7 @@ namespace BookReviewWeb.Pages.Library
 
             return RedirectToPage(new { id = bookId });
         }
+        
         public async Task<IActionResult> OnPostRemoveFromMyBooksAsync(int bookId)
         {
             if (!User.Identity.IsAuthenticated)
@@ -192,6 +209,62 @@ namespace BookReviewWeb.Pages.Library
 
             return RedirectToPage(new { id = bookId });
         }
+        
+        public async Task<IActionResult> OnPostVoteReviewAsync(int reviewId, int voteType)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToPage("/Auth/Login", new { returnUrl = Request.Path });
+            }
+            
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            
+            // Get the review to find its book ID for the redirect
+            var review = await _context.Reviews
+                .FirstOrDefaultAsync(r => r.Id == reviewId);
+                
+            if (review == null)
+            {
+                return NotFound();
+            }
+            
+            // Check if the user has already voted on this review
+            var existingVote = await _context.ReviewVotes
+                .FirstOrDefaultAsync(rv => rv.ReviewId == reviewId && rv.UserId == userId);
+                
+            if (existingVote != null)
+            {
+                if (existingVote.VoteType == voteType)
+                {
+                    // If the user clicks the same vote type again, remove the vote (toggle off)
+                    _context.ReviewVotes.Remove(existingVote);
+                }
+                else
+                {
+                    // Change vote type
+                    existingVote.VoteType = voteType;
+                    existingVote.CreatedAt = DateTime.Now;
+                }
+            }
+            else
+            {
+                // Create a new vote
+                var newVote = new ReviewVote
+                {
+                    ReviewId = reviewId,
+                    UserId = userId,
+                    VoteType = voteType,
+                    CreatedAt = DateTime.Now
+                };
+                
+                _context.ReviewVotes.Add(newVote);
+            }
+            
+            await _context.SaveChangesAsync();
+            
+            return RedirectToPage(new { id = review.BookId });
+        }
+        
         public static string GetStatusName(int status)
         {
             return status switch
@@ -202,6 +275,38 @@ namespace BookReviewWeb.Pages.Library
                 4 => "Completed",
                 _ => "Unknown"
             };
+        }
+        
+        // Get user's vote for a review (1 = upvote, 2 = downvote, 0 = no vote)
+        public int GetUserVoteForReview(int reviewId)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return 0;
+            }
+            
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            
+            // Check if we have this review's votes loaded
+            if (!ReviewVotes.ContainsKey(reviewId))
+            {
+                return 0;
+            }
+            
+            var userVote = ReviewVotes[reviewId].FirstOrDefault(v => v.UserId == userId);
+            return userVote?.VoteType ?? 0;
+        }
+        
+        // Get count of votes by type for a review
+        public int GetVoteCountForReview(int reviewId, int voteType)
+        {
+            // Check if we have this review's votes loaded
+            if (!ReviewVotes.ContainsKey(reviewId))
+            {
+                return 0;
+            }
+            
+            return ReviewVotes[reviewId].Count(v => v.VoteType == voteType);
         }
     }
 }

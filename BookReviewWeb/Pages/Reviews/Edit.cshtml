@@ -2,56 +2,18 @@
 @model BookReviewWeb.Pages.Reviews.EditModel
 @{
     ViewData["Title"] = "Edit Review";
+    
+    // Immediately redirect to the book details page
+    Response.Redirect($"/Library/Details?id={Model.Review.BookId}");
 }
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h2 class="mb-0">Edit Review</h2>
-                </div>
-                <div class="card-body">
-                    <div class="mb-4">
-                        <h3>@Model.Review.Book.Title</h3>
-                        <p class="text-muted">by @Model.Review.Book.Author</p>
-                    </div>
-                    
-                    <form method="post" id="reviewForm">
-                        <input type="hidden" asp-for="Review.Id" />
-                        <input type="hidden" asp-for="Review.BookId" />
-                        <input type="hidden" asp-for="Review.UserId" />
-                        <input type="hidden" asp-for="Review.CreatedAt" />
-                        <input type="hidden" id="ratingInput" asp-for="Review.Rating" />
-                        
-                        <div class="mb-3">
-                            <label class="form-label">Rating</label>
-                            <div class="star-rating">
-                                <i class="bi bi-star star-item" data-rating="1"></i>
-                                <i class="bi bi-star star-item" data-rating="2"></i>
-                                <i class="bi bi-star star-item" data-rating="3"></i>
-                                <i class="bi bi-star star-item" data-rating="4"></i>
-                                <i class="bi bi-star star-item" data-rating="5"></i>
-                                <span id="ratingValue" class="ms-2 text-muted">0/5</span>
-                            </div>
-                            <span asp-validation-for="Review.Rating" class="text-danger"></span>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label asp-for="Review.Comment" class="form-label">Comment</label>
-                            <textarea asp-for="Review.Comment" class="form-control" rows="5"></textarea>
-                            <span asp-validation-for="Review.Comment" class="text-danger"></span>
-                        </div>
-                        
-                        <div class="d-flex gap-2">
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
-                            <a asp-page="/Library/Details" asp-route-id="@Model.Review.BookId" class="btn btn-outline-secondary">Cancel</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<div class="container mt-4">
+    <div class="alert alert-info">
+        <h4>Feature Disabled</h4>
+        <p>Editing reviews is no longer supported. You will be redirected to the book details page.</p>
     </div>
+    
+    <a href="/Library/Details?id=@Model.Review.BookId" class="btn btn-primary">Return to Book Details</a>
 </div>
 
 @section Scripts {
