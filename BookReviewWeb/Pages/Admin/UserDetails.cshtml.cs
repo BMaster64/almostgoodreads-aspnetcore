@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using BookReviewWeb.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -27,6 +28,9 @@ namespace BookReviewWeb.Pages.Admin
 
         [TempData]
         public string SuccessMessage { get; set; }
+        
+        [TempData]
+        public string PasswordErrorMessage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
@@ -88,6 +92,46 @@ namespace BookReviewWeb.Pages.Admin
             await _context.SaveChangesAsync();
             
             SuccessMessage = $"User '{user.UserName}' has been unbanned.";
+            return RedirectToPage(new { id });
+        }
+        
+        public async Task<IActionResult> OnPostPromoteToAdminAsync(int id, string adminPassword)
+        {
+            var user = await _context.Users.FindAsync(id);
+            
+            if (user == null)
+            {
+                return NotFound();
+            }
+            
+            // Don't allow promoting if already an admin
+            if (user.Role == "Admin")
+            {
+                return RedirectToPage(new { id });
+            }
+            
+            // Get current admin user
+            var adminId = int.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var adminUser = await _context.Users.FindAsync(adminId);
+            
+            if (adminUser == null)
+            {
+                PasswordErrorMessage = "Error verifying admin credentials.";
+                return RedirectToPage(new { id });
+            }
+            
+            // Verify admin password
+            if (adminUser.PasswordHash != adminPassword)
+            {
+                PasswordErrorMessage = "Incorrect admin password. Please try again.";
+                return RedirectToPage(new { id });
+            }
+            
+            // Promote user to admin
+            user.Role = "Admin";
+            await _context.SaveChangesAsync();
+            
+            SuccessMessage = $"User '{user.UserName}' has been promoted to admin.";
             return RedirectToPage(new { id });
         }
     }

@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "H:\\FPT aint shit\\PRN222\\Project\\LastP\\PRN222_Project\\BookReviewWeb\\wwwroot\\images\\covers\\c2c1e590-de57-4986-8e71-a7a4703fb695_493132727_1099222588679231_2321535423491592071_n.jpg",
+      "PackagePath": "staticwebassets\\images\\covers\\c2c1e590-de57-4986-8e71-a7a4703fb695_493132727_1099222588679231_2321535423491592071_n.jpg"
+    },
+    {
       "Id": "H:\\FPT aint shit\\PRN222\\Project\\LastP\\PRN222_Project\\BookReviewWeb\\wwwroot\\js\\bookScripts.js",
       "PackagePath": "staticwebassets\\js\\bookScripts.js"
     },
