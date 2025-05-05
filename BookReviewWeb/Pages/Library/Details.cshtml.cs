@@ -31,6 +31,10 @@ namespace BookReviewWeb.Pages.Library
         // Dictionary to store review votes
         private Dictionary<int, List<ReviewVote>> ReviewVotes { get; set; } = new Dictionary<int, List<ReviewVote>>();
 
+        // Vote type constants
+        public const int UPVOTE = 1;
+        public const int DOWNVOTE = -1;  // Changed from 2 to -1
+
         [BindProperty]
         public ReviewInputModel ReviewInput { get; set; }
         public MyBook UserBookEntry { get; set; }
@@ -228,13 +232,16 @@ namespace BookReviewWeb.Pages.Library
                 return NotFound();
             }
             
+            // Convert vote type from UI (1, 2) to database values (1, -1)
+            int databaseVoteType = voteType == 1 ? UPVOTE : DOWNVOTE;
+            
             // Check if the user has already voted on this review
             var existingVote = await _context.ReviewVotes
                 .FirstOrDefaultAsync(rv => rv.ReviewId == reviewId && rv.UserId == userId);
                 
             if (existingVote != null)
             {
-                if (existingVote.VoteType == voteType)
+                if (existingVote.VoteType == databaseVoteType)
                 {
                     // If the user clicks the same vote type again, remove the vote (toggle off)
                     _context.ReviewVotes.Remove(existingVote);
@@ -242,7 +249,7 @@ namespace BookReviewWeb.Pages.Library
                 else
                 {
                     // Change vote type
-                    existingVote.VoteType = voteType;
+                    existingVote.VoteType = databaseVoteType;
                     existingVote.CreatedAt = DateTime.Now;
                 }
             }
@@ -253,7 +260,7 @@ namespace BookReviewWeb.Pages.Library
                 {
                     ReviewId = reviewId,
                     UserId = userId,
-                    VoteType = voteType,
+                    VoteType = databaseVoteType,
                     CreatedAt = DateTime.Now
                 };
                 
@@ -277,7 +284,7 @@ namespace BookReviewWeb.Pages.Library
             };
         }
         
-        // Get user's vote for a review (1 = upvote, 2 = downvote, 0 = no vote)
+        // Get user's vote for a review (1 = upvote, -1 = downvote, 0 = no vote)
         public int GetUserVoteForReview(int reviewId)
         {
             if (!User.Identity.IsAuthenticated)
@@ -294,7 +301,11 @@ namespace BookReviewWeb.Pages.Library
             }
             
             var userVote = ReviewVotes[reviewId].FirstOrDefault(v => v.UserId == userId);
-            return userVote?.VoteType ?? 0;
+            if (userVote == null)
+                return 0;
+                
+            // Convert database vote type to UI representation
+            return userVote.VoteType == DOWNVOTE ? 2 : 1;
         }
         
         // Get count of votes by type for a review
@@ -306,7 +317,10 @@ namespace BookReviewWeb.Pages.Library
                 return 0;
             }
             
-            return ReviewVotes[reviewId].Count(v => v.VoteType == voteType);
+            // Convert UI vote type to database value for counting
+            int databaseVoteType = voteType == 1 ? UPVOTE : DOWNVOTE;
+            
+            return ReviewVotes[reviewId].Count(v => v.VoteType == databaseVoteType);
         }
     }
 }
