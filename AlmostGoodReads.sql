@@ -8,6 +8,15 @@ CREATE TABLE Users (
     Role NVARCHAR(50) NOT NULL
         CHECK (Role IN ('User','Admin'))
 );
+ -- Thêm trường Status vào bảng Users
+ALTER TABLE Users
+ADD Status INT NOT NULL DEFAULT 1; -- 1: Active, 2: Banned, 3: Suspended...
+GO
+
+-- Thêm ràng buộc CHECK để đảm bảo giá trị Status hợp lệ
+ALTER TABLE Users
+ADD CONSTRAINT CHK_User_Status CHECK (Status IN (1, 2, 3)); -- 1: Active, 2: Banned, 3: Suspended
+GO
 
 -- 2. Books
 CREATE TABLE Books (
