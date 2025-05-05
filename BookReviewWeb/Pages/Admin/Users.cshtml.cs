@@ -41,9 +41,6 @@ namespace BookReviewWeb.Pages.Admin
         [TempData]
         public string SuccessMessage { get; set; }
         
-        [TempData]
-        public string PasswordErrorMessage { get; set; }
-        
         public Dictionary<int, UserStatistics> UserStats { get; set; } = new Dictionary<int, UserStatistics>();
         
         public class UserStatistics
@@ -54,8 +51,14 @@ namespace BookReviewWeb.Pages.Admin
 
         public async Task OnGetAsync()
         {
-            // Start with the base query
+            // Start with the base query - exclude admin accounts by default unless specifically filtered
             var usersQuery = _context.Users.AsQueryable();
+            
+            if (string.IsNullOrEmpty(RoleFilter))
+            {
+                // By default, only show regular users
+                usersQuery = usersQuery.Where(u => u.Role != "Admin");
+            }
             
             // Apply search filter if provided
             if (!string.IsNullOrEmpty(SearchTerm))
@@ -70,7 +73,7 @@ namespace BookReviewWeb.Pages.Admin
                 usersQuery = usersQuery.Where(u => u.Status == statusValue);
             }
             
-            // Apply role filter if provided
+            // Apply role filter if provided (will override the default excluding admin)
             if (!string.IsNullOrEmpty(RoleFilter))
             {
                 usersQuery = usersQuery.Where(u => u.Role == RoleFilter);
@@ -192,7 +195,7 @@ namespace BookReviewWeb.Pages.Admin
             return RedirectToPage();
         }
         
-        public async Task<IActionResult> OnPostPromoteToAdminAsync(int id, string adminPassword)
+        public async Task<IActionResult> OnPostDeleteAccountAsync(int id, string adminPassword)
         {
             var user = await _context.Users.FindAsync(id);
             
@@ -201,7 +204,7 @@ namespace BookReviewWeb.Pages.Admin
                 return NotFound();
             }
             
-            // Don't allow promoting if already an admin
+            // Don't allow deleting an admin
             if (user.Role == "Admin")
             {
                 return RedirectToPage();
@@ -213,22 +216,32 @@ namespace BookReviewWeb.Pages.Admin
             
             if (adminUser == null)
             {
-                PasswordErrorMessage = "Error verifying admin credentials.";
+                SuccessMessage = "Error verifying admin credentials.";
                 return RedirectToPage();
             }
             
             // Verify admin password
             if (adminUser.PasswordHash != adminPassword)
             {
-                PasswordErrorMessage = "Incorrect admin password. Please try again.";
+                SuccessMessage = "Incorrect admin password. Account deletion failed.";
                 return RedirectToPage();
             }
             
-            // Promote user to admin
-            user.Role = "Admin";
+            // First delete user's related data
+            var userReviews = await _context.Reviews.Where(r => r.UserId == id).ToListAsync();
+            var userBooks = await _context.MyBooks.Where(mb => mb.UserId == id).ToListAsync();
+            var userVotes = await _context.ReviewVotes.Where(rv => rv.UserId == id).ToListAsync();
+            
+            // Remove related data first (to avoid foreign key constraint errors)
+            _context.ReviewVotes.RemoveRange(userVotes);
+            _context.Reviews.RemoveRange(userReviews);
+            _context.MyBooks.RemoveRange(userBooks);
+            
+            // Finally, remove the user
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
             
-            SuccessMessage = $"User '{user.UserName}' has been promoted to admin.";
+            SuccessMessage = $"User '{user.UserName}' has been permanently deleted.";
             return RedirectToPage();
         }
     }

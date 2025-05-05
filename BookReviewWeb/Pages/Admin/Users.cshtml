@@ -32,9 +32,9 @@
                             <option value="3">Banned</option>
                         </select>
                         <select asp-for="RoleFilter" class="form-select me-2" onchange="this.form.submit()">
-                            <option value="">All Roles</option>
-                            <option value="Admin">Admin</option>
-                            <option value="User">User</option>
+                            <option value="">Regular Users</option>
+                            <option value="Admin">Admins</option>
+                            <option value="User">Users</option>
                         </select>
                     </form>
                 </div>
@@ -58,7 +58,7 @@
                                 <th>Role</th>
                                 <th>Status</th>
                                 <th>Reviews</th>
-                                <th style="width: 300px;">Actions</th>
+                                <th style="width: 260px;">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -97,27 +97,30 @@
                                                 <i class="fas fa-eye"></i> Details
                                             </a>
                                             
-                                            @if (user.Status == 1 && user.Role != "Admin") // Active non-admin
+                                            @if (user.Role != "Admin")
                                             {
-                                                <button type="button" class="btn btn-sm btn-outline-info ms-1" 
-                                                        data-bs-toggle="modal" data-bs-target="#promoteModal" 
-                                                        data-user-id="@user.Id" data-username="@user.UserName">
-                                                    <i class="fas fa-user-shield"></i> Promote
-                                                </button>
+                                                @if (user.Status == 1) // Active non-admin
+                                                {
+                                                    <form method="post" asp-page-handler="Ban" asp-route-id="@user.Id">
+                                                        <button type="submit" class="btn btn-sm btn-outline-danger ms-1" onclick="return confirm('Are you sure you want to ban this user?')">
+                                                            <i class="fas fa-ban"></i> Ban
+                                                        </button>
+                                                    </form>
+                                                }
+                                                @if (user.Status == 3) // Banned
+                                                {
+                                                    <form method="post" asp-page-handler="Activate" asp-route-id="@user.Id">
+                                                        <button type="submit" class="btn btn-sm btn-outline-success ms-1">
+                                                            <i class="fas fa-check"></i> Unban
+                                                        </button>
+                                                    </form>
+                                                }
                                                 
-                                                <form method="post" asp-page-handler="Ban" asp-route-id="@user.Id">
-                                                    <button type="submit" class="btn btn-sm btn-outline-danger ms-1" onclick="return confirm('Are you sure you want to ban this user?')">
-                                                        <i class="fas fa-ban"></i> Ban
-                                                    </button>
-                                                </form>
-                                            }
-                                            @if (user.Status == 3) // Banned
-                                            {
-                                                <form method="post" asp-page-handler="Activate" asp-route-id="@user.Id">
-                                                    <button type="submit" class="btn btn-sm btn-outline-success ms-1">
-                                                        <i class="fas fa-check"></i> Unban
-                                                    </button>
-                                                </form>
+                                                <button type="button" class="btn btn-sm btn-outline-danger ms-1" 
+                                                        data-bs-toggle="modal" data-bs-target="#deleteModal" 
+                                                        data-user-id="@user.Id" data-username="@user.UserName">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </button>
                                             }
                                         </div>
                                     </td>
@@ -176,37 +179,35 @@
         </nav>
     }
     
-    <!-- Promote to Admin Modal -->
-    <div class="modal fade" id="promoteModal" tabindex="-1" aria-labelledby="promoteModalLabel" aria-hidden="true">
+    <!-- Delete Account Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form method="post" asp-page-handler="PromoteToAdmin">
-                    <input type="hidden" id="userId" name="id" value="" />
+                <form method="post" asp-page-handler="DeleteAccount">
+                    <input type="hidden" id="deleteUserId" name="id" value="" />
                     <div class="modal-header">
-                        <h5 class="modal-title" id="promoteModalLabel">Promote User to Admin</h5>
+                        <h5 class="modal-title" id="deleteModalLabel">Delete User Account</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-warning">
+                        <div class="alert alert-danger">
                             <i class="fas fa-exclamation-triangle me-2"></i>
-                            You are about to promote <strong id="usernameDisplay"></strong> to administrator role.
-                            This will grant them full access to all admin features.
+                            <strong>Warning:</strong> You are about to permanently delete the account for <strong id="deleteUsernameDisplay"></strong>.
+                            This action cannot be undone.
                         </div>
+                        
+                        <p>All user data including reviews, ratings, and book lists will be permanently removed.</p>
                         
                         <p>Please confirm your admin password to proceed:</p>
                         
                         <div class="mb-3">
-                            <label for="adminPassword" class="form-label">Your Admin Password</label>
-                            <input type="password" id="adminPassword" name="adminPassword" class="form-control" required />
-                            @if (!string.IsNullOrEmpty(Model.PasswordErrorMessage))
-                            {
-                                <span class="text-danger">@Model.PasswordErrorMessage</span>
-                            }
+                            <label for="deleteAdminPassword" class="form-label">Your Admin Password</label>
+                            <input type="password" id="deleteAdminPassword" name="adminPassword" class="form-control" required />
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Promote to Admin</button>
+                        <button type="submit" class="btn btn-danger">Delete Account</button>
                     </div>
                 </form>
             </div>
@@ -217,24 +218,17 @@
 @section Scripts {
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var promoteModal = document.getElementById('promoteModal');
-            if (promoteModal) {
-                promoteModal.addEventListener('show.bs.modal', function(event) {
+            // Delete Modal
+            var deleteModal = document.getElementById('deleteModal');
+            if (deleteModal) {
+                deleteModal.addEventListener('show.bs.modal', function(event) {
                     var button = event.relatedTarget;
                     var userId = button.getAttribute('data-user-id');
                     var username = button.getAttribute('data-username');
                     
-                    document.getElementById('userId').value = userId;
-                    document.getElementById('usernameDisplay').textContent = username;
+                    document.getElementById('deleteUserId').value = userId;
+                    document.getElementById('deleteUsernameDisplay').textContent = username;
                 });
-            }
-            
-            @if (!string.IsNullOrEmpty(Model.PasswordErrorMessage))
-            {
-                <text>
-                var modal = new bootstrap.Modal(document.getElementById('promoteModal'));
-                modal.show();
-                </text>
             }
         });
     </script>

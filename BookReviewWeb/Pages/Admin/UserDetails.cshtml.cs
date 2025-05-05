@@ -30,7 +30,7 @@ namespace BookReviewWeb.Pages.Admin
         public string SuccessMessage { get; set; }
         
         [TempData]
-        public string PasswordErrorMessage { get; set; }
+        public string DeletePasswordErrorMessage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
@@ -95,7 +95,7 @@ namespace BookReviewWeb.Pages.Admin
             return RedirectToPage(new { id });
         }
         
-        public async Task<IActionResult> OnPostPromoteToAdminAsync(int id, string adminPassword)
+        public async Task<IActionResult> OnPostDeleteAccountAsync(int id, string adminPassword)
         {
             var user = await _context.Users.FindAsync(id);
             
@@ -104,7 +104,7 @@ namespace BookReviewWeb.Pages.Admin
                 return NotFound();
             }
             
-            // Don't allow promoting if already an admin
+            // Don't allow deleting an admin
             if (user.Role == "Admin")
             {
                 return RedirectToPage(new { id });
@@ -116,23 +116,33 @@ namespace BookReviewWeb.Pages.Admin
             
             if (adminUser == null)
             {
-                PasswordErrorMessage = "Error verifying admin credentials.";
+                DeletePasswordErrorMessage = "Error verifying admin credentials.";
                 return RedirectToPage(new { id });
             }
             
             // Verify admin password
             if (adminUser.PasswordHash != adminPassword)
             {
-                PasswordErrorMessage = "Incorrect admin password. Please try again.";
+                DeletePasswordErrorMessage = "Incorrect admin password. Please try again.";
                 return RedirectToPage(new { id });
             }
             
-            // Promote user to admin
-            user.Role = "Admin";
+            // First delete user's related data
+            var userReviews = await _context.Reviews.Where(r => r.UserId == id).ToListAsync();
+            var userBooks = await _context.MyBooks.Where(mb => mb.UserId == id).ToListAsync();
+            var userVotes = await _context.ReviewVotes.Where(rv => rv.UserId == id).ToListAsync();
+            
+            // Remove related data first (to avoid foreign key constraint errors)
+            _context.ReviewVotes.RemoveRange(userVotes);
+            _context.Reviews.RemoveRange(userReviews);
+            _context.MyBooks.RemoveRange(userBooks);
+            
+            // Finally, remove the user
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
             
-            SuccessMessage = $"User '{user.UserName}' has been promoted to admin.";
-            return RedirectToPage(new { id });
+            SuccessMessage = $"User '{user.UserName}' has been permanently deleted.";
+            return RedirectToPage("Users");
         }
     }
 } 
