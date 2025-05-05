@@ -523,3 +523,4 @@ H:\FPT aint shit\PRN222\Project\LastP\PRN222_Project\BookReviewWeb\obj\Debug\net
 H:\FPT aint shit\PRN222\Project\LastP\PRN222_Project\BookReviewWeb\obj\Debug\net8.0\BookReviewWeb.genruntimeconfig.cache
 H:\FPT aint shit\PRN222\Project\LastP\PRN222_Project\BookReviewWeb\obj\Debug\net8.0\ref\BookReviewWeb.dll
 H:\FPT aint shit\PRN222\Project\LastP\PRN222_Project\BookReviewWeb\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Document\Eppede\PRN222\PRN222_Project\BookReviewWeb\bin\Debug\net8.0\libman.json
