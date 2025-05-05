@@ -11,10 +11,10 @@ namespace BookReviewWeb.Pages.Library
 {
     public class CreateModel : PageModel
     {
-        private readonly BookReviewWeb.Models.AlmostGoodReadsContext _context;
+        private readonly AlmostGoodReadsContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public CreateModel(BookReviewWeb.Models.AlmostGoodReadsContext context, IWebHostEnvironment webHostEnvironment)
+        public CreateModel(AlmostGoodReadsContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
@@ -28,9 +28,15 @@ namespace BookReviewWeb.Pages.Library
 
         [BindProperty]
         public List<int> SelectedGenreIds { get; set; } = new List<int>();
+        
+        [TempData]
+        public string ReturnUrl { get; set; }
 
         public IActionResult OnGet()
         {
+            // Store the referrer URL to redirect back after submission
+            ReturnUrl = Request.Headers["Referer"].ToString();
+            
             ViewData["Genres"] = new MultiSelectList(_context.Genres, "GenreId", "GenreName");
             return Page();
         }
@@ -85,6 +91,12 @@ namespace BookReviewWeb.Pages.Library
             _context.Books.Add(Book);
             await _context.SaveChangesAsync();
 
+            // Redirect to the previous page if available, otherwise go to Index
+            if (!string.IsNullOrEmpty(ReturnUrl))
+            {
+                return Redirect(ReturnUrl);
+            }
+            
             return RedirectToPage("./Index");
         }
     }

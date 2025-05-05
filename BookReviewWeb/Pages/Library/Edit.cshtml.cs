@@ -26,6 +26,9 @@ namespace BookReviewWeb.Pages.Library
         public IFormFile? CoverImage { get; set; }
         [BindProperty]
         public List<int> SelectedGenreIds { get; set; } = new List<int>();
+        
+        [TempData]
+        public string ReturnUrl { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -33,6 +36,9 @@ namespace BookReviewWeb.Pages.Library
             {
                 return NotFound();
             }
+
+            // Store the referrer URL to redirect back after submission
+            ReturnUrl = Request.Headers["Referer"].ToString();
 
             var book = await _context.Books
                 .Include(b => b.Genres)
@@ -125,6 +131,12 @@ namespace BookReviewWeb.Pages.Library
             {
                 if (!BookExists(Book.Id)) return NotFound();
                 else throw;
+            }
+            
+            // Redirect to the previous page if available, otherwise go to Index
+            if (!string.IsNullOrEmpty(ReturnUrl))
+            {
+                return Redirect(ReturnUrl);
             }
             
             return RedirectToPage("./Index");
