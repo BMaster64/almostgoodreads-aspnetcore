@@ -11,13 +11,15 @@ public partial class Review
 
     public int UserId { get; set; }
 
-    public int? Rating { get; set; }
+    public int Rating { get; set; }
 
     public string? Comment { get; set; }
 
     public DateTime CreatedAt { get; set; }
 
     public virtual Book Book { get; set; } = null!;
+
+    public virtual ICollection<ReviewVote> ReviewVotes { get; set; } = new List<ReviewVote>();
 
     public virtual User User { get; set; } = null!;
 }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookReviewWeb.Pages.User
 {
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User,Admin")]
     public class MyReviewsModel : PageModel
     {
         private readonly AlmostGoodReadsContext _context;

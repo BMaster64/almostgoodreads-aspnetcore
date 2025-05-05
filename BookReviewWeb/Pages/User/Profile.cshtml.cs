@@ -70,7 +70,7 @@ namespace BookReviewWeb.Pages.User
             // Calculate review statistics
             ReviewCount = CurrentUser.Reviews.Count;
             AverageRating = CurrentUser.Reviews.Any() ? 
-                CurrentUser.Reviews.Average(r => r.Rating ?? 0) : 0;
+                CurrentUser.Reviews.Average(r => r.Rating) : 0;
             BooksInCollection = await _context.MyBooks.CountAsync(mb => mb.UserId == userId);
 
             return Page();
@@ -98,7 +98,7 @@ namespace BookReviewWeb.Pages.User
                 CurrentUser = user;
                 ReviewCount = user.Reviews.Count;
                 AverageRating = user.Reviews.Any() ? 
-                    user.Reviews.Average(r => r.Rating ?? 0) : 0;
+                    user.Reviews.Average(r => r.Rating) : 0;
                 BooksInCollection = await _context.MyBooks.CountAsync(mb => mb.UserId == userId);
 
                 return Page();
@@ -118,7 +118,7 @@ namespace BookReviewWeb.Pages.User
                     CurrentUser = user;
                     ReviewCount = user.Reviews.Count;
                     AverageRating = user.Reviews.Any() ? 
-                        user.Reviews.Average(r => r.Rating ?? 0) : 0;
+                        user.Reviews.Average(r => r.Rating) : 0;
                     
                     return Page();
                 }
@@ -149,7 +149,7 @@ namespace BookReviewWeb.Pages.User
                 CurrentUser = user;
                 ReviewCount = user.Reviews.Count;
                 AverageRating = user.Reviews.Any() ? 
-                    user.Reviews.Average(r => r.Rating ?? 0) : 0;
+                    user.Reviews.Average(r => r.Rating) : 0;
                 
                 return Page();
             }

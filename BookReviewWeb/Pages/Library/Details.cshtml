@@ -133,7 +133,7 @@
             {
                 <div class="alert alert-info">
                     <i class="bi bi-info-circle"></i> 
-                    Please <a asp-page="/Auth/Login" asp-route-returnUrl="@Request.Path">log in</a> to leave a review.
+                    Please <a href="https://localhost:7077/Auth/Login">log in</a> to leave a review.
                 </div>
             }
 
@@ -169,11 +169,14 @@
                                 <div class="rating mb-2">
                                     @for (int i = 1; i <= 5; i++)
                                     {
-                                        <i class="bi @(i <= (review.Rating ?? 0) ? "bi-star-fill text-warning" : "bi-star text-muted")"></i>
+                                        <i class="bi @(i <= review.Rating ? "bi-star-fill text-warning" : "bi-star text-muted")"></i>
                                     }
                                 </div>
                                 
-                                <p class="review-text-truncated">@review.Comment</p>
+                                <div class="review-text-truncated">
+                                    @review.Comment
+                                    <span class="read-more-hint">Click to read more</span>
+                                </div>
                                 
                                 @if (User.Identity.IsAuthenticated && int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier).Value) == review.UserId || User.IsInRole("Admin"))
                                 {
@@ -212,9 +215,9 @@
                                             <div class="rating">
                                                 @for (int i = 1; i <= 5; i++)
                                                 {
-                                                    <i class="bi @(i <= (review.Rating ?? 0) ? "bi-star-fill text-warning" : "bi-star text-muted")"></i>
+                                                    <i class="bi @(i <= review.Rating ? "bi-star-fill text-warning" : "bi-star text-muted")"></i>
                                                 }
-                                                <span class="ms-2">@(review.Rating ?? 0)/5</span>
+                                                <span class="ms-2">@review.Rating/5</span>
                                             </div>
                                             <small class="text-muted">@review.CreatedAt.ToString("MMM dd, yyyy")</small>
                                         </div>
@@ -279,28 +282,35 @@
         
         .review-text-truncated {
             display: -webkit-box;
-            -webkit-line-clamp: 5;
+            -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
             position: relative;
             min-height: 50px;
+            margin-bottom: 20px;
         }
         
-        .review-text-truncated::after {
-            content: "Click to read more...";
+        .read-more-hint {
             position: absolute;
-            bottom: 0;
+            bottom: -20px;
             right: 0;
-            padding: 0 5px;
-            background-color: white;
             font-size: 0.8rem;
             color: #0d6efd;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2px 5px;
+            border-radius: 3px;
             display: none;
         }
         
-        .review-text-truncated:hover::after {
-            display: inline;
+        .review-text-truncated::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1));
         }
 
         .review-content p {
@@ -314,6 +324,16 @@
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Check if review text is truncated and show/hide read more hint
+            document.querySelectorAll('.review-text-truncated').forEach(element => {
+                if (element.scrollHeight > element.clientHeight) {
+                    element.querySelector('.read-more-hint').style.display = 'block';
+                } else {
+                    element.querySelector('.read-more-hint').style.display = 'none';
+                    element.style.marginBottom = '0';
+                }
+            });
+            
             // Initialize tooltips
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

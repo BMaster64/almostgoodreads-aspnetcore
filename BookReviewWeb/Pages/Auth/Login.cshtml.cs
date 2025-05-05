@@ -80,6 +80,19 @@ namespace BookReviewWeb.Pages.Auth
                     return Page();
                 }
 
+                // Check user status
+                if (user.Status == 2) // Suspended
+                {
+                    ModelState.AddModelError(string.Empty, "Your account has been temporarily suspended. Please contact an administrator.");
+                    return Page();
+                }
+                
+                if (user.Status == 3) // Banned
+                {
+                    ModelState.AddModelError(string.Empty, "Your account has been banned. Please contact an administrator.");
+                    return Page();
+                }
+
                 // Create claims for the user
                 var claims = new List<Claim>
                 {

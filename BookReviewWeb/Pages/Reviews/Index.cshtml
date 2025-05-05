@@ -67,9 +67,9 @@
                                     <div class="rating mb-2">
                                         @for (int i = 1; i <= 5; i++)
                                         {
-                                            <i class="fas @(i <= (review.Rating ?? 0) ? "fa-star text-warning" : "fa-star text-secondary")"></i>
+                                            <i class="fas @(i <= review.Rating ? "fa-star text-warning" : "fa-star text-secondary")"></i>
                                         }
-                                        <span class="ms-2 fw-bold">@(review.Rating ?? 0)/5</span>
+                                        <span class="ms-2 fw-bold">@review.Rating/5</span>
                                     </div>
                                     
                                     <p class="review-text mb-0">@(review.Comment.Length > 250 ? review.Comment.Substring(0, 250) + "..." : review.Comment)</p>

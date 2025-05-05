@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace BookReviewWeb.Models;
 
@@ -12,7 +11,6 @@ public partial class MyBook
 
     public int BookId { get; set; }
 
-    [Range(1, 4)]
     public int Status { get; set; }
 
     public DateTime DateAdded { get; set; }

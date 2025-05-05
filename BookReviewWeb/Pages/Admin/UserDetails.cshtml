@@ -1,0 +1,173 @@
+@page
+@model BookReviewWeb.Pages.Admin.UserDetailsModel
+@{
+    ViewData["Title"] = $"User Details - {Model.User.UserName}";
+}
+
+<div class="container">
+    <div class="mb-3">
+        <a asp-page="Users" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left me-2"></i> Back to Users
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">User Information</h4>
+                </div>
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-user-circle fa-5x text-primary"></i>
+                    </div>
+                    
+                    <table class="table">
+                        <tr>
+                            <th>ID:</th>
+                            <td>@Model.User.Id</td>
+                        </tr>
+                        <tr>
+                            <th>Username:</th>
+                            <td>@Model.User.UserName</td>
+                        </tr>
+                        <tr>
+                            <th>Role:</th>
+                            <td>
+                                <span class="badge @(Model.User.Role == "Admin" ? "bg-danger" : "bg-primary")">
+                                    @Model.User.Role
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Status:</th>
+                            <td>
+                                @{
+                                    var statusClass = Model.User.Status switch
+                                    {
+                                        1 => "bg-success",
+                                        3 => "bg-danger",
+                                        _ => "bg-secondary"
+                                    };
+                                    
+                                    var statusText = Model.User.Status switch
+                                    {
+                                        1 => "Active",
+                                        3 => "Banned",
+                                        _ => "Unknown"
+                                    };
+                                }
+                                <span class="badge @statusClass">@statusText</span>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <div class="d-grid gap-2">
+                        @if (Model.User.Role != "Admin")
+                        {
+                            @if (Model.User.Status == 1) // Active
+                            {
+                                <form method="post" asp-page-handler="Ban" asp-route-id="@Model.User.Id">
+                                    <button type="submit" class="btn btn-danger d-block w-100" onclick="return confirm('Are you sure you want to ban this user?')">
+                                        <i class="fas fa-ban me-2"></i> Ban User
+                                    </button>
+                                </form>
+                            }
+                            @if (Model.User.Status == 3) // Banned
+                            {
+                                <form method="post" asp-page-handler="Activate" asp-route-id="@Model.User.Id">
+                                    <button type="submit" class="btn btn-success d-block w-100">
+                                        <i class="fas fa-check me-2"></i> Unban User
+                                    </button>
+                                </form>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">User Statistics</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <div class="display-4">@Model.ReviewCount</div>
+                            <div class="text-muted">Reviews</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <div class="display-4">@Model.AverageRating.ToString("F1")</div>
+                            <div class="text-muted">Average Rating</div>
+                            <div class="rating mt-2">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <i class="fas @(i <= Model.AverageRating ? "fa-star text-warning" : "fa-star text-secondary")" style="font-size: 1.5rem;"></i>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">User Reviews</h4>
+                </div>
+                <div class="card-body">
+                    @if (!Model.Reviews.Any())
+                    {
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i> This user hasn't written any reviews yet.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="list-group">
+                            @foreach (var review in Model.Reviews)
+                            {
+                                <div class="list-group-item p-3 mb-3">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <div>
+                                            <a asp-page="/Library/Details" asp-route-id="@review.BookId" class="h5 text-decoration-none">
+                                                @review.Book.Title
+                                            </a>
+                                            <div class="text-muted">by @review.Book.Author</div>
+                                        </div>
+                                        <small class="text-muted">@review.CreatedAt.ToString("MMM dd, yyyy")</small>
+                                    </div>
+                                    
+                                    <div class="rating mb-2">
+                                        @for (int i = 1; i <= 5; i++)
+                                        {
+                                            <i class="fas @(i <= review.Rating ? "fa-star text-warning" : "fa-star text-secondary")"></i>
+                                        }
+                                    </div>
+                                    
+                                    <p class="mb-2">@review.Comment</p>
+                                    
+                                    <div class="btn-group">
+                                        <a asp-page="/Reviews/Delete" asp-route-id="@review.Id" class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .rating .fas {
+        margin-right: 5px;
+    }
+</style> 

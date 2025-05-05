@@ -21,7 +21,7 @@ namespace BookReviewWeb.Pages.Library
         }
 
         public Book Book { get; set; } = default!;
-        public double AverageRating => Book.Reviews.Any() ? Book.Reviews.Average(r => r.Rating ?? 0) : 0;
+        public double AverageRating => Book.Reviews.Any() ? Book.Reviews.Average(r => r.Rating) : 0;
         public int ReviewCount => Book.Reviews.Count;
         public bool HasReviews => Book.Reviews.Any();
         

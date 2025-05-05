@@ -17,9 +17,9 @@ public partial class Book
 
     public string? CoverImageUrl { get; set; }
 
-    public virtual ICollection<Genre> Genres { get; set; } = new List<Genre>();
-
     public virtual ICollection<MyBook> MyBooks { get; set; } = new List<MyBook>();
 
     public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
+
+    public virtual ICollection<Genre> Genres { get; set; } = new List<Genre>();
 }
